@@ -99,7 +99,7 @@ Channel discovery and joining to be investigated further.  Currently, this would
 ```script
 var listen =  new fdc3.ContextListener( handler);
 ```
-#5. Appendix
+# 5. Appendix
 ## 5.1 Proposed Selector Syntax
 A selector syntax for App discovery and connectivity.  For example:
 ```script
