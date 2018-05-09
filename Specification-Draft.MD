@@ -46,32 +46,53 @@ Referred to via **fdc3** object
 ## 4.2 register
 Dynamically registers an intent with the agent.  Returns confirmation of the registration.
 ```script
-fdc3.register(intent)
+fdc3.register(intent: String)
 ```
 ## 4.3 open
 Launches/links to an App by name.
+Returns a Promise - resolving if the App is opened, rejecting if an error occurs.
 ```script
-fdc3.open(name, context)
+fdc3.open(name: String, context: Object) > Promise
 ```
+
+### 4.3.1 Error States
+- App not found
+- Error on App launch
+- App timeout
+- Resolver crashed / unavailable
+
 *Note:* open no longer takes an ‘intent’ argument.  This is now moved to the more specific intent API below.
 ## 4.4 resolve
 Resolves a intent & context pair to a list of App names/metadata. 
 
-Resolve is effectively granting programmatic access to the Desktop Agent's resolver. The returned dataset & metadata is Desktop Agent-specific. The returned array of objects should support a Name property that is the name of the App
+Resolve is effectively granting programmatic access to the Desktop Agent's resolver.  Returns a promise, resolves to an Array. The resolved dataset & metadata is Desktop Agent-specific. The returned array of objects should support a Name property that is the name of the App
 ```script
-fdc3.resolve(intent, context) > Array
+fdc3.resolve(intent: String, context: Object) > Promise
 ```
+### 4.4.1 Error States
+- No Apps found
+- Resolver crashed / unavailable
+- Timeout from Resolver
+
 *Note:* This method could also be used by federated Desktop Agents to query for resolution from other Desktop Agents (and then aggregate results).
 ## 4.5 broadcast
 Publishes context to other Apps on the desktop.  
 ```script
-fdc3.broadcast(context) 
+fdc3.broadcast(context: Object) 
 ```
 ## 4.6 Intent Object
 ### 4.6.1 Constructor
 ```script
-new fdc3.Intent(intent-name)
+new fdc3.Intent(intent: String, context: Object, target: String)
 ```
+All arguments to constructor are optional.
+
+### 4.6.2 intent
+Getter/Setter for name of the intent.
+```script
+Intent.intent = "...";
+```
+
 ### 4.6.2 context
 Getter/Setter for context data on the intent.
 ```script
@@ -79,11 +100,19 @@ Intent.context = {...};
 ```
 ### 4.6.3 target
 Getter/Setter.  Name of App to target for the Intent. Use if creating an explicit intent that bypasses resolver and goes directly to an App.
+
 ### 4.6.4 send
-Dispatches the intent with the Agent.  Accepts contextData and target (if an explicit Intent) as optional args.
+Dispatches the intent with the Agent.  Accepts contextData and target (if an explicit Intent) as optional args.  Returns a Promise - resolving if the intent successfully results in launching an App, rejecting if an error state occurs.
 ```script	
-	Intent.send(context, target)
+	Intent.send(context: Object, target: String) > Promise
 ```
+
+
+#### 4.6.4.1 Error States
+- No Apps found
+- Resolver crashed / unavailable
+- Timeout from Resolver
+
 ## 4.7 IntentListener Object
 Listens to incoming intents from the Agent.
 ### 4.7.1 Constructor
@@ -97,7 +126,7 @@ Listens to incoming context broadcast from the Desktop Agent.
 
 Channel discovery and joining to be investigated further.  Currently, this would be handled by the Desktop Agent and external to the App.
 ```script
-var listen =  new fdc3.ContextListener( handler);
+var listen =  new fdc3.ContextListener( handler: Function);
 ```
 # 5. Appendix
 ## 5.1 Proposed Selector Syntax
