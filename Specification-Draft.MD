@@ -39,9 +39,9 @@ On the financial desktop, applications often want to broadcast context to any nu
 Intents functionality is dependent on resolver functionality to map the intent to a specific App.  This will often require end-user input.  Resolution can either be performed by the Desktop Agent (raising UI to pick the desired App for the intent) or by the app launching the intent - in which case the calling App will handle the resolution itself (using the resolve API below) and then invoke an explicit Intent object.
 # 4. APIs
 Note - these APIs are specified in pseudo-code and for convenience written in a synchronous style.  Many or all implementations would be expected to be async using a Promise or callback pattern.  
-## 4.1 Agent
+## 4.1 Agent Namespace
 
-Referred to via **fdc3** object
+Each Desktop Agent will expose the defined APIs via namespacing of its choosing.  For example, a global javascript object can be defined with the API, or the API could be imported into a local scope via a module. For the sake of illustration, the API in the examples in this spec are referred to via the (fictional) **fdc3** object.
 
 ## 4.2 open
 Launches/links to an app by name.
