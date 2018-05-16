@@ -115,6 +115,12 @@ Accepts name of Intent to handle and handler function
 ```script
 var listen =  new fdc3.IntentListener(“ViewChart”, context => {...});
 ```
+### 4.6.2 unsubscribe
+Unsubscribe the listener object.
+
+```script
+   listen.unsubscribe();
+```
 ## 4.7 ContextListener Object
 Listens to incoming context broadcast from the Desktop Agent.
 ### 4.7.1 Constructor 
@@ -123,6 +129,13 @@ Channel discovery and joining to be investigated further.  Currently, this would
 ```script
 var listen =  new fdc3.ContextListener( handler: Function);
 ```
+### 4.7.2 unsubscribe
+Unsubscribe the listener object.
+
+```script
+   listen.unsubscribe();
+```
+
 # 5. Appendix
 ## 5.1 Proposed Selector Syntax
 A selector syntax for app discovery and connectivity.  For example:
