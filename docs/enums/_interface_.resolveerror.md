@@ -1,0 +1,44 @@
+[fdc3-api](../README.md) > ["interface"](../modules/_interface_.md) > [ResolveError](../enums/_interface_.resolveerror.md)
+
+# Enumeration: ResolveError
+
+## Index
+
+### Enumeration members
+
+* [NoAppsFound](_interface_.resolveerror.md#noappsfound)
+* [ResolverTimeout](_interface_.resolveerror.md#resolvertimeout)
+* [ResolverUnavailable](_interface_.resolveerror.md#resolverunavailable)
+
+---
+
+## Enumeration members
+
+<a id="noappsfound"></a>
+
+###  NoAppsFound
+
+**NoAppsFound**:  = "NoAppsFound"
+
+*Defined in interface.ts:12*
+
+___
+<a id="resolvertimeout"></a>
+
+###  ResolverTimeout
+
+**ResolverTimeout**:  = "ResolverTimeout"
+
+*Defined in interface.ts:14*
+
+___
+<a id="resolverunavailable"></a>
+
+###  ResolverUnavailable
+
+**ResolverUnavailable**:  = "ResolverUnavailable"
+
+*Defined in interface.ts:13*
+
+___
+
