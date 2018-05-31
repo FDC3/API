@@ -72,7 +72,7 @@ interface DesktopAgent {
   /**
    * Publishes context to other apps on the desktop.
    */
-  broadcast(context: Context);
+  broadcast(context: Context): void;
 
   /**
    * Constructs a new intent
