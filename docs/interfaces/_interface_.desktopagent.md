@@ -29,9 +29,9 @@ A Desktop Agent can be connected to one or more App Directories and will use dir
 
 ###  broadcast
 
-▸ **broadcast**(context: *[Context](../modules/_interface_.md#context)*): `any`
+▸ **broadcast**(context: *[Context](../modules/_interface_.md#context)*): `void`
 
-*Defined in interface.ts:75*
+*Defined in [interface.ts:80](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L80)*
 
 Publishes context to other apps on the desktop.
 
@@ -41,7 +41,7 @@ Publishes context to other apps on the desktop.
 | ------ | ------ |
 | context | [Context](../modules/_interface_.md#context) |
 
-**Returns:** `any`
+**Returns:** `void`
 
 ___
 <a id="contextlistener"></a>
@@ -50,7 +50,7 @@ ___
 
 ▸ **contextListener**(handler: *`function`*): [Listener](_interface_.listener.md)
 
-*Defined in interface.ts:90*
+*Defined in [interface.ts:95](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L95)*
 
 Listens to incoming context broadcast from the Desktop Agent.
 
@@ -69,7 +69,7 @@ ___
 
 ▸ **intent**(intent: *[IntentName](../modules/_interface_.md#intentname)*, context: *[Context](../modules/_interface_.md#context)*, target: *`String`*): [Intent](_interface_.intent.md)
 
-*Defined in interface.ts:80*
+*Defined in [interface.ts:85](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L85)*
 
 Constructs a new intent
 
@@ -90,7 +90,7 @@ ___
 
 ▸ **intentListener**(intent: *[IntentName](../modules/_interface_.md#intentname)*, handler: *`function`*): [Listener](_interface_.listener.md)
 
-*Defined in interface.ts:85*
+*Defined in [interface.ts:90](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L90)*
 
 Listens to incoming Intents from the Agent.
 
@@ -110,7 +110,7 @@ ___
 
 ▸ **open**(name: *`String`*, context: *[Context](../modules/_interface_.md#context)*): `Promise`<`void`>
 
-*Defined in interface.ts:61*
+*Defined in [interface.ts:66](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L66)*
 
 Launches/links to an app by name.
 
@@ -132,7 +132,7 @@ ___
 
 ▸ **resolve**(intent: *[IntentName](../modules/_interface_.md#intentname)*, context: *[Context](../modules/_interface_.md#context)*): `Promise`<`Array`<[AppMetadata](_interface_.appmetadata.md)>>
 
-*Defined in interface.ts:70*
+*Defined in [interface.ts:75](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L75)*
 
 Resolves a intent & context pair to a list of App names/metadata.
 

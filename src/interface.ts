@@ -1,5 +1,6 @@
 type Context = Object;
 type IntentName = String;
+type AppIdentifier = String;
 
 enum OpenError {
   AppNotFound = "AppNotFound",
@@ -17,7 +18,11 @@ enum ResolveError {
 interface Intent {
   intent: IntentName;
   context: Context;
-  target?: String;
+  /**
+   * Name of app to target for the Intent. Use if creating an explicit intent
+   * that bypasses resolver and goes directly to an app.
+   */
+  target?: AppIdentifier;
   
   /**
    * Dispatches the intent with the Desktop Agent.
@@ -26,14 +31,14 @@ interface Intent {
    * Returns a Promise - resolving if the intent successfully results in launching an App.
    * If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
    */
-  send(context: Context, target?: String): Promise<void>
+  send(context: Context, target?: AppIdentifier): Promise<void>
 }
 
 /**
  * App metadata is Desktop Agent specific - but should support a name property.
  */
 interface AppMetadata {
-  name: String;
+  name: AppIdentifier;
 }
 
 interface Listener {

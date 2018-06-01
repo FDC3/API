@@ -18,6 +18,7 @@
 
 ### Type aliases
 
+* [AppIdentifier](_interface_.md#appidentifier)
 * [Context](_interface_.md#context)
 * [IntentName](_interface_.md#intentname)
 
@@ -25,13 +26,22 @@
 
 ## Type aliases
 
+<a id="appidentifier"></a>
+
+###  AppIdentifier
+
+**ΤAppIdentifier**: *`String`*
+
+*Defined in [interface.ts:3](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L3)*
+
+___
 <a id="context"></a>
 
 ###  Context
 
 **ΤContext**: *`Object`*
 
-*Defined in interface.ts:1*
+*Defined in [interface.ts:1](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L1)*
 
 ___
 <a id="intentname"></a>
@@ -40,7 +50,7 @@ ___
 
 **ΤIntentName**: *`String`*
 
-*Defined in interface.ts:2*
+*Defined in [interface.ts:2](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L2)*
 
 ___
 

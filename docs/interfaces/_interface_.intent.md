@@ -28,7 +28,7 @@
 
 **● context**: *[Context](../modules/_interface_.md#context)*
 
-*Defined in interface.ts:19*
+*Defined in [interface.ts:20](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L20)*
 
 ___
 <a id="intent"></a>
@@ -37,16 +37,18 @@ ___
 
 **● intent**: *[IntentName](../modules/_interface_.md#intentname)*
 
-*Defined in interface.ts:18*
+*Defined in [interface.ts:19](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L19)*
 
 ___
 <a id="target"></a>
 
 ### `<Optional>` target
 
-**● target**: *`String`*
+**● target**: *[AppIdentifier](../modules/_interface_.md#appidentifier)*
 
-*Defined in interface.ts:20*
+*Defined in [interface.ts:25](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L25)*
+
+Name of app to target for the Intent. Use if creating an explicit intent that bypasses resolver and goes directly to an app.
 
 ___
 
@@ -56,9 +58,9 @@ ___
 
 ###  send
 
-▸ **send**(context: *[Context](../modules/_interface_.md#context)*, target?: *`String`*): `Promise`<`void`>
+▸ **send**(context: *[Context](../modules/_interface_.md#context)*, target?: *[AppIdentifier](../modules/_interface_.md#appidentifier)*): `Promise`<`void`>
 
-*Defined in interface.ts:29*
+*Defined in [interface.ts:34](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L34)*
 
 Dispatches the intent with the Desktop Agent.
 
@@ -69,7 +71,7 @@ Accepts context data and target (if an explicit Intent) as optional args. Return
 | Param | Type |
 | ------ | ------ |
 | context | [Context](../modules/_interface_.md#context) |
-| `Optional` target | `String` |
+| `Optional` target | [AppIdentifier](../modules/_interface_.md#appidentifier) |
 
 **Returns:** `Promise`<`void`>
 
