@@ -1,0 +1,16 @@
+{
+  "name": "fdc3-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/FDC3/API.git",
+  "license": "Apache-2.0",
+  "scripts": {
+    "test": "tsc",
+    "doc": "typedoc --theme markdown --out docs src "
+  },
+  "devDependencies": {
+    "typedoc": "^0.11.1",
+    "typedoc-plugin-markdown": "^1.1.12",
+    "typescript": "^2.8.4"
+  }
+}

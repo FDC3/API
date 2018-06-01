@@ -1,4 +1,6 @@
-# API
+
+API
+===
 
 API Working Group repository.
 
@@ -11,3 +13,12 @@ yarn install
 ```
 
 When making changes to the TypeScript interfaces, run `yarn test` to ensure there are no syntax errors, and `yarn run doc` to regenerate the documentation.
+
+## Index
+
+### External modules
+
+* ["interface"](modules/_interface_.md)
+
+---
+
