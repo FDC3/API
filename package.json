@@ -5,10 +5,15 @@
   "repository": "https://github.com/FDC3/API.git",
   "license": "Apache-2.0",
   "scripts": {
-    "test": "tsc",
+    "test": "mocha -r ts-node/register ./test/*.spec.ts",
     "doc": "typedoc --theme markdown --out docs src "
   },
   "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.3",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "ts-node": "^6.1.2",
     "typedoc": "^0.11.1",
     "typedoc-plugin-markdown": "^1.1.12",
     "typescript": "^2.8.4"
