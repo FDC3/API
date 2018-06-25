@@ -1,4 +1,6 @@
 export type Context = any;
+export type AppIdentifier = String;
+export type IntentName = String;
 
 enum OpenError {
   AppNotFound = "AppNotFound",
@@ -14,21 +16,26 @@ enum ResolveError {
 }
 
 /**
- * the result of calling desktopAgent.resolve() is `Promise<Array<ResolveResult>>`
- * the IntentResolution contains the app meta data for apps
- * which support the intent
+ * the result of calling desktopAgent.resolve() is `Promise<ResolveResults>`
+ * the ResolveResult contains the list of apps which support the intent
  */
-export interface ResolveResult {
-    metaData: AppMetadata;
+export interface ResolveResults {
+    targets: AppMetadata[];
 }
 
 /**
- * the result of calling desktopAgent.resolveContext() is `Promise<Array<ResolveContextResult>>`
- * the ResolveContextResult contains the intent name and and array of
- * app meta data for apps which support the intent
+ * the result of calling desktopAgent.resolveContext() is `Promise<ResolveContextResults>`
+ * the ResolveContextResults contains the list of intents for the given context type
+ */
+export interface ResolveContextResults {
+    intents: ResolveContextResult[];
+}
+
+/**
+ * a ResolveContextResult models an intent and supported app targets
  */
 export interface ResolveContextResult {
-    intentName: string;
+    intentName: IntentName;
     targets: Array<AppMetadata>;
 }
 
@@ -39,13 +46,13 @@ export interface Intent {
   /**
    * name of the intent verb
    */
-  name: string;
+  name: IntentName;
   /**
-   * name of the intent verb
+   * context for the intent
    */
   context: Context;
   /**
-   * the application meta data, typically from an IntentResolution
+   * target application meta data, (ex: from a call to resolve)
    */
   target?: AppMetadata;
 }
@@ -54,8 +61,7 @@ export interface Intent {
  * App metadata is Desktop Agent specific - but should support a name property.
  */
 export interface AppMetadata {
-  id: string;
-  name: string;
+  name: AppIdentifier;
 }
 
 export interface Listener {
@@ -83,11 +89,11 @@ export interface DesktopAgent {
   open(app: AppMetadata, context: Context): Promise<void>;
 
   /**
-   * fire an intent and forget about it
+   * sends an intent, containing a context and optional target
    * 
    * If firing errors, it returns an `Error` with a string from the `ResolveError` or `OpenError` enumerations.
    */
-  fire(intent: Intent): Promise<void>;
+  sendIntent(intent: Intent): Promise<void>;
 
   /**
    * Resolves a intent & context pair to a list of App names/metadata.
@@ -96,16 +102,16 @@ export interface DesktopAgent {
    * Returns a promise that resolves to an Array. The resolved dataset & metadata is Desktop Agent-specific.
    * If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
    */
-  resolve(intent: Intent): Promise<Array<ResolveResult>>;
+  resolve(intent: Intent): Promise<ResolveResults>;
 
   /**
-   * Resolves a intent & context pair to a list of App names/metadata.
+   * Resolves a context to a list of intents supported by the subsystem.
    *
-   * Resolve is effectively granting programmatic access to the Desktop Agent's resolver. 
-   * Returns a promise that resolves to an Array. The resolved dataset & metadata is Desktop Agent-specific.
+   * ResolveContext is effectively granting programmatic access to the Desktop Agent's resolver. 
+   * Returns a promise of type `ResolveContextResults`.  The resolved list of intents is Desktop Agent-specific.
    * If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
    */
-  resolveContext(context: Context): Promise<Array<ResolveContextResult>>;
+  resolveContext(context: Context): Promise<ResolveContextResults>;
 
   /**
    * Publishes context to other apps on the desktop.

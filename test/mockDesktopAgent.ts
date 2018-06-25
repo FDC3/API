@@ -1,11 +1,11 @@
 // MOCK desktop agent
 
-import {AppMetadata, Context, ResolveResult, ResolveContextResult, DesktopAgent, Intent, Listener} from "../src/interface"
+import {AppMetadata, Context, ResolveResults, ResolveContextResults, ResolveContextResult, DesktopAgent, Intent, Listener} from "../src/interface"
 
 const appMetaDataList:AppMetadata[] = [
-    { id: 'myChatApp', name: 'myChatApp'}
-    ,{ id: 'myChartApp', name: 'myChartApp'}
-    ,{ id: 'myAppThatSupportsAllContexts', name: 'myAppThatSupportsAllContexts'}
+    { name: 'myChatApp'}
+    ,{ name: 'myChartApp'}
+    ,{ name: 'myAppThatSupportsAllContexts'}
 ];
 
 const intents2ResolveResultsMap = {
@@ -38,21 +38,22 @@ export const desktopAgent:DesktopAgent = {
         };
     },
     
-    resolve: async function(intent: Intent): Promise<Array<ResolveResult>> {
-        return intents2ResolveResultsMap[intent.name];
+    resolve: async function(intent: Intent): Promise<ResolveResults> {
+        const rr:ResolveResults = { targets: intents2ResolveResultsMap[intent.name.valueOf()] }
+        return rr;
     },
 
-    resolveContext: async function(context: Context): Promise<Array<ResolveContextResult>> {
+    resolveContext: async function(context: Context): Promise<ResolveContextResults> {
         if ( typeof context.userid !== 'undefined' ) {
             const resolver1 = { intentName: 'startChat', targets: intents2ResolveResultsMap['startChat'] };
             const resolver2 = { intentName: 'viewContact', targets: intents2ResolveResultsMap['viewContact'] };
-            return [resolver1, resolver2];
+            return { intents: [resolver1, resolver2] };
         } else if ( typeof context.symbol !== 'undefined' ) {
-            return [{ intentName: 'viewChart', targets: intents2ResolveResultsMap['viewChart'] }];
+            return { intents: [{ intentName: 'viewChart', targets: intents2ResolveResultsMap['viewChart'] }] };
         }
     },
 
-    fire: async function(intent: Intent) {
+    sendIntent: async function(intent: Intent) {
         return;
     },
 
