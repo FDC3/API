@@ -19,7 +19,15 @@ enum ResolveError {
  * the result of calling desktopAgent.resolve() is `Promise<ResolveResults>`
  * the ResolveResult contains the list of apps which support the intent
  */
-export interface ResolveResults {
+export interface RaiseIntentResults {
+    data: any;
+}
+
+/**
+ * the result of calling desktopAgent.resolve() is `Promise<ResolveResults>`
+ * the ResolveResult contains the list of apps which support the intent
+ */
+export interface ResolveIntentResults {
     targets: AppMetadata[];
 }
 
@@ -59,6 +67,7 @@ export interface Intent {
 
 /**
  * App metadata is Desktop Agent specific - but should support a name property.
+ * This could be an application as defined by the FDC3 working group.
  */
 export interface AppMetadata {
   name: AppIdentifier;
@@ -82,18 +91,11 @@ export interface Listener {
  */
 export interface DesktopAgent {
   /**
-   * Launches/links to an app by name.
+   * Launches/links to an app by name, this is typically called after a call to resolveIntent
    * 
    * If opening errors, it returns an `Error` with a string from the `OpenError` enumeration.
    */
-  open(app: AppMetadata, context: Context): Promise<void>;
-
-  /**
-   * sends an intent, containing a context and optional target
-   * 
-   * If firing errors, it returns an `Error` with a string from the `ResolveError` or `OpenError` enumerations.
-   */
-  sendIntent(intent: Intent): Promise<void>;
+  open(app: AppMetadata, intent: Intent): Promise<void>;
 
   /**
    * Resolves a intent & context pair to a list of App names/metadata.
@@ -102,7 +104,7 @@ export interface DesktopAgent {
    * Returns a promise that resolves to an Array. The resolved dataset & metadata is Desktop Agent-specific.
    * If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
    */
-  resolve(intent: Intent): Promise<ResolveResults>;
+  resolveIntent(intent: Intent): Promise<ResolveIntentResults>;
 
   /**
    * Resolves a context to a list of intents supported by the subsystem.
@@ -112,6 +114,13 @@ export interface DesktopAgent {
    * If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
    */
   resolveContext(context: Context): Promise<ResolveContextResults>;
+
+  /**
+   * sends an intent, containing a context and optional target
+   * 
+   * If firing errors, it returns an `Error` with a string from the `ResolveError` or `OpenError` enumerations.
+   */
+  raiseIntent(intent: Intent): Promise<RaiseIntentResults>;
 
   /**
    * Publishes context to other apps on the desktop.
@@ -126,10 +135,10 @@ export interface DesktopAgent {
   /**
    * Listens to incoming Intents from the Agent.
    */
-  intentListener(intent: string, handler: (context: Context) => void): Listener;
+  newIntentListener(intent: string, handler: (context: Context) => void): Listener;
 
   /**
    * Listens to incoming context broadcast from the Desktop Agent.
    */
-  contextListener(handler: (context: Context) => void): Listener;
+  newContextListener(handler: (context: Context) => void): Listener;
 }

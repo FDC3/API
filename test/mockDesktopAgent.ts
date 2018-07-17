@@ -1,6 +1,6 @@
 // MOCK desktop agent
 
-import {AppMetadata, Context, ResolveResults, ResolveContextResults, ResolveContextResult, DesktopAgent, Intent, Listener} from "../src/interface"
+import {AppMetadata, Context, RaiseIntentResults, ResolveIntentResults, ResolveContextResults, ResolveContextResult, DesktopAgent, Intent, Listener} from "../src/interface"
 
 const appMetaDataList:AppMetadata[] = [
     { name: 'myChatApp'}
@@ -26,7 +26,7 @@ const intents2ResolveResultsMap = {
 
 export const desktopAgent:DesktopAgent = {
 
-    open: async function(app: AppMetadata, context: Context): Promise<void> {
+    open: async function(app: AppMetadata, intent: Intent): Promise<void> {
         return;        
     },
 
@@ -38,8 +38,8 @@ export const desktopAgent:DesktopAgent = {
         };
     },
     
-    resolve: async function(intent: Intent): Promise<ResolveResults> {
-        const rr:ResolveResults = { targets: intents2ResolveResultsMap[intent.name.valueOf()] }
+    resolveIntent: async function(intent: Intent): Promise<ResolveIntentResults> {
+        const rr:ResolveIntentResults = { targets: intents2ResolveResultsMap[intent.name.valueOf()] }
         return rr;
     },
 
@@ -53,18 +53,18 @@ export const desktopAgent:DesktopAgent = {
         }
     },
 
-    sendIntent: async function(intent: Intent) {
+    raiseIntent: async function(intent: Intent): Promise<RaiseIntentResults> {
         return;
     },
 
     broadcast: function() {
     },
 
-    intentListener: function(intent: string, handler: (context: Context) => void):Listener {
+    newIntentListener: function(intent: string, handler: (context: Context) => void):Listener {
         return { unsubscribe: () => {} };
     },
     
-    contextListener: function(handler: (context: Context) => void):Listener {
+    newContextListener: function(handler: (context: Context) => void):Listener {
         return { unsubscribe: () => {} };
     }
 }
