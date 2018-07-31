@@ -23,20 +23,24 @@ Desktop Agents expose an FDC3 standard API to applications they have launched.  
 
 ![Desktop Agent - Standards Schematic](/images/api-1.png)
 
-The surface area of FDC3 standardization (shown in *white* above) itself is quite small in comparison to the extent of a typical desktop agent implementation (in *grey*).  For example: 
+The surface area of FDC3 standardization (shown in *white* above) itself is quite small in comparison to the extent of a typical desktop agent implementation (in *grey*).  
+
+For example: 
 - workspace management
 - user identity and SSO
 - entitlements
 - UX of application resolution
 
-Are all areas of functionality that any feature complete desktop agent would implement, but not currently areas considered for standardization under FDC3.
+Are all areas of functionality that any feature complete desktop agent would implement, but are not currently areas considered for standardization under FDC3.
 
 ### 1.1.1 Inter-Agent Communication
 A goal of FDC3 standards is that applications running in different Desktop Agent contexts on the same desktop would be able to interoperate.  And that one Desktop Agent context would be able to discover and launch an application in another Desktop Application context.  
 
 ![Desktop Agent - Interop](/images/api-2.png)
 
-Desktop Agent interop is supported by common standards for APIs for App discovery and launching.  So, an App in one Desktop Agent context would not need to know a different syntax to call an App in another Desktop Agent context.  However, the actual connection protocol between Desktop Agents is not currently in scope for FDC3 standards.  Given that there is a relatively small number of Desktop Agents and that any given desktop will have a finite and relatively static number of Desktop Agents installed at any given time, the connectivity between different Agents can be adequetly handled for the time being on a case-by-case basis.  
+Desktop Agent interop is supported by common standards for APIs for App discovery and launching.  So, an App in one Desktop Agent context would not need to know a different syntax to call an App in another Desktop Agent context.  
+
+The actual connection protocol between Desktop Agents is not currently in scope for FDC3 standards.  Given that there are a relatively small number of Desktop Agents, and that any given desktop will have a finite and relatively static number of Desktop Agents installed at any given time, the connectivity between different Agents can be adequetly handled for the time being on a case-by-case basis.  
 
 ## 1.2 Application
 An application is any endpoint on the desktop that is:
