@@ -44,7 +44,7 @@ When making changes to the TypeScript interfaces, run `yarn test` to ensure ther
 
 **Ƭ AppIdentifier**: *`String`*
 
-*Defined in [interface.ts:3](../../src/interface.ts#L3)*
+*Defined in [interface.ts:3](/src/interface.ts#L3)*
 
 ___
 <a id="context"></a>
@@ -53,7 +53,7 @@ ___
 
 **Ƭ Context**: *`Object`*
 
-*Defined in [interface.ts:1](../../src/interface.ts#L1)*
+*Defined in [interface.ts:1](/src/interface.ts#L1)*
 
 ___
 <a id="intentname"></a>
@@ -62,7 +62,7 @@ ___
 
 **Ƭ IntentName**: *`String`*
 
-*Defined in [interface.ts:2](../../src/interface.ts#L2)*
+*Defined in [interface.ts:2](/src/interface.ts#L2)*
 
 ___
 

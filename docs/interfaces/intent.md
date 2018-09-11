@@ -28,7 +28,7 @@
 
 **● context**: *[Context](../#context)*
 
-*Defined in [interface.ts:20](../../src/interface.ts#L20)*
+*Defined in [interface.ts:20](/src/interface.ts#L20)*
 
 ___
 <a id="intent-1"></a>
@@ -37,7 +37,7 @@ ___
 
 **● intent**: *[IntentName](../#intentname)*
 
-*Defined in [interface.ts:19](../../src/interface.ts#L19)*
+*Defined in [interface.ts:19](/src/interface.ts#L19)*
 
 ___
 <a id="target"></a>
@@ -46,7 +46,7 @@ ___
 
 **● target**: *[AppIdentifier](../#appidentifier)*
 
-*Defined in [interface.ts:25](../../src/interface.ts#L25)*
+*Defined in [interface.ts:25](/src/interface.ts#L25)*
 
 Name of app to target for the Intent. Use if creating an explicit intent that bypasses resolver and goes directly to an app.
 
@@ -60,7 +60,7 @@ ___
 
 ▸ **send**(context: *[Context](../#context)*, target?: *[AppIdentifier](../#appidentifier)*): `Promise`<`void`>
 
-*Defined in [interface.ts:34](../../src/interface.ts#L34)*
+*Defined in [interface.ts:34](/src/interface.ts#L34)*
 
 Dispatches the intent with the Desktop Agent.
 

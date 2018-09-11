@@ -24,7 +24,7 @@ App metadata is Desktop Agent specific - but should support a name property.
 
 **● name**: *[AppIdentifier](../#appidentifier)*
 
-*Defined in [interface.ts:41](../../src/interface.ts#L41)*
+*Defined in [interface.ts:41](/src/interface.ts#L41)*
 
 ___
 

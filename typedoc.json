@@ -2,5 +2,5 @@
     "mode": "file",
     "out": "docs",
     "theme": "markdown",
-    "sourcefile-url-prefix": "../../src/"
+    "sourcefile-url-prefix": "/src/"
   }
