@@ -16,9 +16,9 @@ A Desktop Agent can be connected to one or more App Directories and will use dir
 
 * [broadcast](desktopagent.md#broadcast)
 * [contextListener](desktopagent.md#contextlistener)
-* [intent](desktopagent.md#intent)
 * [intentListener](desktopagent.md#intentlistener)
 * [open](desktopagent.md#open)
+* [raiseIntent](desktopagent.md#raiseintent)
 * [resolve](desktopagent.md#resolve)
 
 ---
@@ -31,7 +31,7 @@ A Desktop Agent can be connected to one or more App Directories and will use dir
 
 ▸ **broadcast**(context: *[Context](../#context)*): `void`
 
-*Defined in [interface.ts:80](../../src/interface.ts#L80)*
+*Defined in [interface.ts:74](/src/interface.ts#L74)*
 
 Publishes context to other apps on the desktop.
 
@@ -50,7 +50,7 @@ ___
 
 ▸ **contextListener**(handler: *`function`*): [Listener](listener.md)
 
-*Defined in [interface.ts:95](../../src/interface.ts#L95)*
+*Defined in [interface.ts:89](/src/interface.ts#L89)*
 
 Listens to incoming context broadcast from the Desktop Agent.
 
@@ -63,34 +63,13 @@ Listens to incoming context broadcast from the Desktop Agent.
 **Returns:** [Listener](listener.md)
 
 ___
-<a id="intent"></a>
-
-###  intent
-
-▸ **intent**(intent: *[IntentName](../#intentname)*, context: *[Context](../#context)*, target: *`String`*): [Intent](intent.md)
-
-*Defined in [interface.ts:85](../../src/interface.ts#L85)*
-
-Constructs a new intent
-
-**Parameters:**
-
-| Param | Type |
-| ------ | ------ |
-| intent | [IntentName](../#intentname) |
-| context | [Context](../#context) |
-| target | `String` |
-
-**Returns:** [Intent](intent.md)
-
-___
 <a id="intentlistener"></a>
 
 ###  intentListener
 
 ▸ **intentListener**(intent: *[IntentName](../#intentname)*, handler: *`function`*): [Listener](listener.md)
 
-*Defined in [interface.ts:90](../../src/interface.ts#L90)*
+*Defined in [interface.ts:84](/src/interface.ts#L84)*
 
 Listens to incoming Intents from the Agent.
 
@@ -108,11 +87,13 @@ ___
 
 ###  open
 
-▸ **open**(name: *`String`*, context: *[Context](../#context)*): `Promise`<`void`>
+▸ **open**(name: *`String`*, context?: *[Context](../#context)*): `Promise`<`void`>
 
-*Defined in [interface.ts:66](../../src/interface.ts#L66)*
+*Defined in [interface.ts:60](/src/interface.ts#L60)*
 
 Launches/links to an app by name.
+
+If a Context object is passed in, this object will be provided to the opened application via a contextListener. The Context argument is functionally equivalent to opening the target app with no context and broadcasting the context directly to it.
 
 If opening errors, it returns an `Error` with a string from the `OpenError` enumeration.
 
@@ -121,9 +102,30 @@ If opening errors, it returns an `Error` with a string from the `OpenError` enum
 | Param | Type |
 | ------ | ------ |
 | name | `String` |
-| context | [Context](../#context) |
+| `Optional` context | [Context](../#context) |
 
 **Returns:** `Promise`<`void`>
+
+___
+<a id="raiseintent"></a>
+
+###  raiseIntent
+
+▸ **raiseIntent**(intent: *[IntentName](../#intentname)*, context: *[Context](../#context)*, target?: *`String`*): `Promise`<[IntentResolution](intentresolution.md)>
+
+*Defined in [interface.ts:79](/src/interface.ts#L79)*
+
+Raises an intent to the desktop agent to resolve.
+
+**Parameters:**
+
+| Param | Type |
+| ------ | ------ |
+| intent | [IntentName](../#intentname) |
+| context | [Context](../#context) |
+| `Optional` target | `String` |
+
+**Returns:** `Promise`<[IntentResolution](intentresolution.md)>
 
 ___
 <a id="resolve"></a>
@@ -132,7 +134,7 @@ ___
 
 ▸ **resolve**(intent: *[IntentName](../#intentname)*, context: *[Context](../#context)*): `Promise`<`Array`<[AppMetadata](appmetadata.md)>>
 
-*Defined in [interface.ts:75](../../src/interface.ts#L75)*
+*Defined in [interface.ts:69](/src/interface.ts#L69)*
 
 Resolves a intent & context pair to a list of App names/metadata.
 
