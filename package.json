@@ -6,11 +6,12 @@
   "license": "Apache-2.0",
   "scripts": {
     "test": "tsc",
-    "doc": "typedoc --theme markdown --out docs src "
+    "doc": "typedoc --options typedoc.json"
   },
   "devDependencies": {
-    "typedoc": "^0.11.1",
-    "typedoc-plugin-markdown": "^1.1.12",
+    "typedoc": "^0.12.0",
+    "typedoc-plugin-markdown": "^1.1.15",
+    "typedoc-plugin-sourcefile-url": "^1.0.3",
     "typescript": "^2.8.4"
   }
 }
