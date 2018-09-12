@@ -41,6 +41,15 @@ interface AppMetadata {
   name: AppIdentifier;
 }
 
+/**
+ * IntentResolution provides a standard format for data returned upon resolving an intent.
+ */
+interface IntentResolution {
+  source: String;
+  data?: Object; 
+  version: String;
+}
+
 interface Listener {
   /**
    * Unsubscribe the listener object.
@@ -63,7 +72,7 @@ interface DesktopAgent {
    * 
    * If opening errors, it returns an `Error` with a string from the `OpenError` enumeration.
    */
-  open(name: String, context: Context): Promise<void>;
+  open(name: String, context?: Context): Promise<void>;
 
   /**
    * Resolves a intent & context pair to a list of App names/metadata.
@@ -80,9 +89,9 @@ interface DesktopAgent {
   broadcast(context: Context): void;
 
   /**
-   * Constructs a new intent
+   * Raises an intent to the desktop agent to resolve.
    */
-  intent(intent: IntentName, context: Context, target: String): Intent;
+  raiseIntent(intent: IntentName, context: Context, target: String): Promise<IntentResolution>;
 
   /**
    * Listens to incoming Intents from the Agent.
