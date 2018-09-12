@@ -81,41 +81,38 @@ If the raising of the intent resolves (or rejects), a standard object will be pa
 
 ```javascript
 {
-    source: String,
-    data: Object, (optional)
-    version: String, 
-    error: Object (optional)
+    source: String;
+    data?: Object; 
+    version: String;
 }
 ```
 - *source* = identifier for the Application resolving the intent (null if the intent could not be resolved)
 - *data* = return data structure - if one is provided for the given intent
 - *version* = the version number of the Intents schema being used
-- *error* = errror object (name, message), if the intent rejects 
-**Note:** The *success* property is to indicate 
+
 
 For example
 
 ```javascript
-agent.raiseIntent('StageOrder').then(
-    result => {
-        if (result.success && result.data){
-            let orderid = result.data.id;
-        }
-    },
-    result => {
-        console.log(result.error.message);
+try {
+    let result = await agent.raiseIntent('StageOrder');
+    if (result.data){
+        let orderId = result.data.id;
     }
-);
+}
+catch (er){
+    console.log(er.message);
+}
+
 ```
 #### 2.2.1.4 Upgrading to a Remote API Connection
 There are a wide range of workflows where decoupled intents and/or context passing do not provide rich enough interactivity and applications are better off exposing proprietary APIs.  In these cases, an App can use the *source* propoerty on the resolution of an intent to connect directly to another App and from there, call remote APIs using the methods available in the Desktop Agent context for the App.  For example: 
 
 ```javascript
     let chart = await agent.raiseIntent('ViewChart');
-    if (chart.success){
-        //construct an OpenFin wrapper for the App
-        let chartApp = fin.Application.wrap(chart.source);
-        //do some OpenFin specific stuff
+     //construct an OpenFin wrapper for the App
+    let chartApp = fin.Application.wrap(chart.source);
+    //do some OpenFin specific stuff
     }
 ```
 ![Upgrading Connection to Remote API](/images/api-3.png)
