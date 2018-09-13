@@ -1,6 +1,6 @@
-type Context = Object;
-type IntentName = String;
-type AppIdentifier = String;
+export type Context = any;
+export type AppIdentifier = String;
+export type IntentName = String;
 
 enum OpenError {
   AppNotFound = "AppNotFound",
@@ -15,33 +15,65 @@ enum ResolveError {
   ResolverTimeout = "ResolverTimeout"
 }
 
-interface Intent {
-  intent: IntentName;
+/**
+ * the result of calling desktopAgent.resolve() is `Promise<ResolveResults>`
+ * the ResolveResult contains the list of apps which support the intent
+ */
+export interface RaiseIntentResults {
+    data: any;
+}
+
+/**
+ * the result of calling desktopAgent.resolve() is `Promise<ResolveResults>`
+ * the ResolveResult contains the list of apps which support the intent
+ */
+export interface ResolveIntentResults {
+    targets: AppMetadata[];
+}
+
+/**
+ * the result of calling desktopAgent.resolveContext() is `Promise<ResolveContextResults>`
+ * the ResolveContextResults contains the list of intents for the given context type
+ */
+export interface ResolveContextResults {
+    intents: ResolveContextResult[];
+}
+
+/**
+ * a ResolveContextResult models an intent and supported app targets
+ */
+export interface ResolveContextResult {
+    intentName: IntentName;
+    targets: Array<AppMetadata>;
+}
+
+/**
+ * an FDC3 Intent
+ */
+export interface Intent {
+  /**
+   * name of the intent verb
+   */
+  name: IntentName;
+  /**
+   * context for the intent
+   */
   context: Context;
   /**
-   * Name of app to target for the Intent. Use if creating an explicit intent
-   * that bypasses resolver and goes directly to an app.
+   * target application meta data, (ex: from a call to resolve)
    */
-  target?: AppIdentifier;
-  
-  /**
-   * Dispatches the intent with the Desktop Agent.
-   * 
-   * Accepts context data and target (if an explicit Intent) as optional args.
-   * Returns a Promise - resolving if the intent successfully results in launching an App.
-   * If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
-   */
-  send(context: Context, target?: AppIdentifier): Promise<void>
+  target?: AppMetadata;
 }
 
 /**
  * App metadata is Desktop Agent specific - but should support a name property.
+ * This could be an application as defined by the FDC3 working group.
  */
-interface AppMetadata {
+export interface AppMetadata {
   name: AppIdentifier;
 }
 
-interface Listener {
+export interface Listener {
   /**
    * Unsubscribe the listener object.
    */
@@ -57,13 +89,13 @@ interface Listener {
  * a given platform, handling functionality like explicit application interop workflows where
  * security, consistency, and implementation requirements are proprietary.
  */
-interface DesktopAgent {
+export interface DesktopAgent {
   /**
-   * Launches/links to an app by name.
+   * Launches/links to an app by name, this is typically called after a call to resolveIntent
    * 
    * If opening errors, it returns an `Error` with a string from the `OpenError` enumeration.
    */
-  open(name: String, context: Context): Promise<void>;
+  open(app: AppMetadata, intent: Intent): Promise<void>;
 
   /**
    * Resolves a intent & context pair to a list of App names/metadata.
@@ -72,7 +104,23 @@ interface DesktopAgent {
    * Returns a promise that resolves to an Array. The resolved dataset & metadata is Desktop Agent-specific.
    * If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
    */
-  resolve(intent: IntentName, context: Context): Promise<Array<AppMetadata>>;
+  resolveIntent(intent: Intent): Promise<ResolveIntentResults>;
+
+  /**
+   * Resolves a context to a list of intents supported by the subsystem.
+   *
+   * ResolveContext is effectively granting programmatic access to the Desktop Agent's resolver. 
+   * Returns a promise of type `ResolveContextResults`.  The resolved list of intents is Desktop Agent-specific.
+   * If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
+   */
+  resolveContext(context: Context): Promise<ResolveContextResults>;
+
+  /**
+   * sends an intent, containing a context and optional target
+   * 
+   * If firing errors, it returns an `Error` with a string from the `ResolveError` or `OpenError` enumerations.
+   */
+  raiseIntent(intent: Intent): Promise<RaiseIntentResults>;
 
   /**
    * Publishes context to other apps on the desktop.
@@ -82,15 +130,15 @@ interface DesktopAgent {
   /**
    * Constructs a new intent
    */
-  intent(intent: IntentName, context: Context, target: String): Intent;
+  newIntent(intent: string, context: Context, target?: AppMetadata): Intent;
 
   /**
    * Listens to incoming Intents from the Agent.
    */
-  intentListener(intent: IntentName, handler: (context: Context) => void): Listener;
+  newIntentListener(intent: string, handler: (context: Context) => void): Listener;
 
   /**
    * Listens to incoming context broadcast from the Desktop Agent.
    */
-  contextListener(handler: (context: Context) => void): Listener;
+  newContextListener(handler: (context: Context) => void): Listener;
 }
