@@ -20,7 +20,7 @@
 
 **NoAppsFound**:  = "NoAppsFound"
 
-*Defined in [interface.ts:13](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L13)*
+*Defined in [interface.ts:13](https://github.com/nkolba/API/blob/72dc74a/src/interface.ts#L13)*
 
 ___
 <a id="resolvertimeout"></a>
@@ -29,7 +29,7 @@ ___
 
 **ResolverTimeout**:  = "ResolverTimeout"
 
-*Defined in [interface.ts:15](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L15)*
+*Defined in [interface.ts:15](https://github.com/nkolba/API/blob/72dc74a/src/interface.ts#L15)*
 
 ___
 <a id="resolverunavailable"></a>
@@ -38,7 +38,7 @@ ___
 
 **ResolverUnavailable**:  = "ResolverUnavailable"
 
-*Defined in [interface.ts:14](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L14)*
+*Defined in [interface.ts:14](https://github.com/nkolba/API/blob/72dc74a/src/interface.ts#L14)*
 
 ___
 

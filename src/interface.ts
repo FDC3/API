@@ -15,30 +15,21 @@ enum ResolveError {
   ResolverTimeout = "ResolverTimeout"
 }
 
-interface Intent {
-  intent: IntentName;
-  context: Context;
-  /**
-   * Name of app to target for the Intent. Use if creating an explicit intent
-   * that bypasses resolver and goes directly to an app.
-   */
-  target?: AppIdentifier;
-  
-  /**
-   * Dispatches the intent with the Desktop Agent.
-   * 
-   * Accepts context data and target (if an explicit Intent) as optional args.
-   * Returns a Promise - resolving if the intent successfully results in launching an App.
-   * If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
-   */
-  send(context: Context, target?: AppIdentifier): Promise<void>
-}
 
 /**
  * App metadata is Desktop Agent specific - but should support a name property.
  */
 interface AppMetadata {
   name: AppIdentifier;
+}
+
+/**
+ * IntentResolution provides a standard format for data returned upon resolving an intent.
+ */
+interface IntentResolution {
+  source: String;
+  data?: Object; 
+  version: String;
 }
 
 interface Listener {
@@ -63,7 +54,7 @@ interface DesktopAgent {
    * 
    * If opening errors, it returns an `Error` with a string from the `OpenError` enumeration.
    */
-  open(name: String, context: Context): Promise<void>;
+  open(name: String, context?: Context): Promise<void>;
 
   /**
    * Resolves a intent & context pair to a list of App names/metadata.
@@ -80,9 +71,9 @@ interface DesktopAgent {
   broadcast(context: Context): void;
 
   /**
-   * Constructs a new intent
+   * Raises an intent to the desktop agent to resolve.
    */
-  intent(intent: IntentName, context: Context, target: String): Intent;
+  raiseIntent(intent: IntentName, context: Context, target?: String): Promise<IntentResolution>;
 
   /**
    * Listens to incoming Intents from the Agent.

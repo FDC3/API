@@ -13,7 +13,7 @@
 
 * [AppMetadata](../interfaces/_interface_.appmetadata.md)
 * [DesktopAgent](../interfaces/_interface_.desktopagent.md)
-* [Intent](../interfaces/_interface_.intent.md)
+* [IntentResolution](../interfaces/_interface_.intentresolution.md)
 * [Listener](../interfaces/_interface_.listener.md)
 
 ### Type aliases
@@ -32,7 +32,7 @@
 
 **ΤAppIdentifier**: *`String`*
 
-*Defined in [interface.ts:3](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L3)*
+*Defined in [interface.ts:3](https://github.com/nkolba/API/blob/72dc74a/src/interface.ts#L3)*
 
 ___
 <a id="context"></a>
@@ -41,7 +41,7 @@ ___
 
 **ΤContext**: *`Object`*
 
-*Defined in [interface.ts:1](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L1)*
+*Defined in [interface.ts:1](https://github.com/nkolba/API/blob/72dc74a/src/interface.ts#L1)*
 
 ___
 <a id="intentname"></a>
@@ -50,7 +50,7 @@ ___
 
 **ΤIntentName**: *`String`*
 
-*Defined in [interface.ts:2](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L2)*
+*Defined in [interface.ts:2](https://github.com/nkolba/API/blob/72dc74a/src/interface.ts#L2)*
 
 ___
 
