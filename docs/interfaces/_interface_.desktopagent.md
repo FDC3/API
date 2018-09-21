@@ -31,7 +31,7 @@ A Desktop Agent can be connected to one or more App Directories and will use dir
 
 ▸ **broadcast**(context: *[Context](../modules/_interface_.md#context)*): `void`
 
-*Defined in [interface.ts:74](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L74)*
+*Defined in [interface.ts:86](https://github.com/nkolba/API/blob/d58cd4b/src/interface.ts#L86)*
 
 Publishes context to other apps on the desktop.
 
@@ -50,7 +50,7 @@ ___
 
 ▸ **contextListener**(handler: *`function`*): [Listener](_interface_.listener.md)
 
-*Defined in [interface.ts:89](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L89)*
+*Defined in [interface.ts:101](https://github.com/nkolba/API/blob/d58cd4b/src/interface.ts#L101)*
 
 Listens to incoming context broadcast from the Desktop Agent.
 
@@ -69,7 +69,7 @@ ___
 
 ▸ **intentListener**(intent: *[IntentName](../modules/_interface_.md#intentname)*, handler: *`function`*): [Listener](_interface_.listener.md)
 
-*Defined in [interface.ts:84](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L84)*
+*Defined in [interface.ts:96](https://github.com/nkolba/API/blob/d58cd4b/src/interface.ts#L96)*
 
 Listens to incoming Intents from the Agent.
 
@@ -89,7 +89,7 @@ ___
 
 ▸ **open**(name: *`String`*, context?: *[Context](../modules/_interface_.md#context)*): `Promise`<`void`>
 
-*Defined in [interface.ts:60](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L60)*
+*Defined in [interface.ts:71](https://github.com/nkolba/API/blob/d58cd4b/src/interface.ts#L71)*
 
 Launches/links to an app by name.
 
@@ -113,7 +113,7 @@ ___
 
 ▸ **raiseIntent**(intent: *[IntentName](../modules/_interface_.md#intentname)*, context: *[Context](../modules/_interface_.md#context)*, target?: *`String`*): `Promise`<[IntentResolution](_interface_.intentresolution.md)>
 
-*Defined in [interface.ts:79](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L79)*
+*Defined in [interface.ts:91](https://github.com/nkolba/API/blob/d58cd4b/src/interface.ts#L91)*
 
 Raises an intent to the desktop agent to resolve.
 
@@ -132,22 +132,22 @@ ___
 
 ###  resolve
 
-▸ **resolve**(intent: *[IntentName](../modules/_interface_.md#intentname)*, context: *[Context](../modules/_interface_.md#context)*): `Promise`<`Array`<[AppMetadata](_interface_.appmetadata.md)>>
+▸ **resolve**(intent: *[IntentName](../modules/_interface_.md#intentname)*, context?: *[Context](../modules/_interface_.md#context)*): `Promise`<`Array`<[ActionMetadata](_interface_.actionmetadata.md)>>
 
-*Defined in [interface.ts:69](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L69)*
+*Defined in [interface.ts:81](https://github.com/nkolba/API/blob/d58cd4b/src/interface.ts#L81)*
 
-Resolves a intent & context pair to a list of App names/metadata.
+Resolves an intent & context pair to a mapping of Intents and Apps (action metadata).
 
-Resolve is effectively granting programmatic access to the Desktop Agent's resolver. Returns a promise that resolves to an Array. The resolved dataset & metadata is Desktop Agent-specific. If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
+Resolve is effectively granting programmatic access to the Desktop Agent's resolver. Returns a promise that resolves to an Array. The resolved dataset & metadata is Desktop Agent-specific. If intent argument is falsey, then all possible intents - and apps corresponding to the intents - are resolved for the provided context. If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
 
 **Parameters:**
 
 | Param | Type |
 | ------ | ------ |
 | intent | [IntentName](../modules/_interface_.md#intentname) |
-| context | [Context](../modules/_interface_.md#context) |
+| `Optional` context | [Context](../modules/_interface_.md#context) |
 
-**Returns:** `Promise`<`Array`<[AppMetadata](_interface_.appmetadata.md)>>
+**Returns:** `Promise`<`Array`<[ActionMetadata](_interface_.actionmetadata.md)>>
 
 ___
 
