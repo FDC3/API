@@ -31,7 +31,7 @@ A Desktop Agent can be connected to one or more App Directories and will use dir
 
 ▸ **broadcast**(context: *[Context](../modules/_interface_.md#context)*): `void`
 
-*Defined in [interface.ts:80](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L80)*
+*Defined in [interface.ts:84](https://github.com/nkolba/API/blob/55929a2/src/interface.ts#L84)*
 
 Publishes context to other apps on the desktop.
 
@@ -50,7 +50,7 @@ ___
 
 ▸ **contextListener**(handler: *`function`*): [Listener](_interface_.listener.md)
 
-*Defined in [interface.ts:95](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L95)*
+*Defined in [interface.ts:99](https://github.com/nkolba/API/blob/55929a2/src/interface.ts#L99)*
 
 Listens to incoming context broadcast from the Desktop Agent.
 
@@ -69,7 +69,7 @@ ___
 
 ▸ **intent**(intent: *[IntentName](../modules/_interface_.md#intentname)*, context: *[Context](../modules/_interface_.md#context)*, target: *`String`*): [Intent](_interface_.intent.md)
 
-*Defined in [interface.ts:85](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L85)*
+*Defined in [interface.ts:89](https://github.com/nkolba/API/blob/55929a2/src/interface.ts#L89)*
 
 Constructs a new intent
 
@@ -90,7 +90,7 @@ ___
 
 ▸ **intentListener**(intent: *[IntentName](../modules/_interface_.md#intentname)*, handler: *`function`*): [Listener](_interface_.listener.md)
 
-*Defined in [interface.ts:90](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L90)*
+*Defined in [interface.ts:94](https://github.com/nkolba/API/blob/55929a2/src/interface.ts#L94)*
 
 Listens to incoming Intents from the Agent.
 
@@ -110,9 +110,11 @@ ___
 
 ▸ **open**(name: *`String`*, context: *[Context](../modules/_interface_.md#context)*): `Promise`<`void`>
 
-*Defined in [interface.ts:66](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L66)*
+*Defined in [interface.ts:70](https://github.com/nkolba/API/blob/55929a2/src/interface.ts#L70)*
 
 Launches/links to an app by name.
+
+If a Context object is passed in, this object will be provided to the opened application via a contextListener. The Context argument is functionally equivalent to opening the target app with no context and broadcasting the context directly to it.
 
 If opening errors, it returns an `Error` with a string from the `OpenError` enumeration.
 
@@ -132,7 +134,7 @@ ___
 
 ▸ **resolve**(intent: *[IntentName](../modules/_interface_.md#intentname)*, context: *[Context](../modules/_interface_.md#context)*): `Promise`<`Array`<[AppMetadata](_interface_.appmetadata.md)>>
 
-*Defined in [interface.ts:75](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L75)*
+*Defined in [interface.ts:79](https://github.com/nkolba/API/blob/55929a2/src/interface.ts#L79)*
 
 Resolves a intent & context pair to a list of App names/metadata.
 

@@ -28,7 +28,7 @@
 
 **● context**: *[Context](../modules/_interface_.md#context)*
 
-*Defined in [interface.ts:20](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L20)*
+*Defined in [interface.ts:20](https://github.com/nkolba/API/blob/55929a2/src/interface.ts#L20)*
 
 ___
 <a id="intent"></a>
@@ -37,7 +37,7 @@ ___
 
 **● intent**: *[IntentName](../modules/_interface_.md#intentname)*
 
-*Defined in [interface.ts:19](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L19)*
+*Defined in [interface.ts:19](https://github.com/nkolba/API/blob/55929a2/src/interface.ts#L19)*
 
 ___
 <a id="target"></a>
@@ -46,7 +46,7 @@ ___
 
 **● target**: *[AppIdentifier](../modules/_interface_.md#appidentifier)*
 
-*Defined in [interface.ts:25](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L25)*
+*Defined in [interface.ts:25](https://github.com/nkolba/API/blob/55929a2/src/interface.ts#L25)*
 
 Name of app to target for the Intent. Use if creating an explicit intent that bypasses resolver and goes directly to an app.
 
@@ -60,7 +60,7 @@ ___
 
 ▸ **send**(context: *[Context](../modules/_interface_.md#context)*, target?: *[AppIdentifier](../modules/_interface_.md#appidentifier)*): `Promise`<`void`>
 
-*Defined in [interface.ts:34](https://github.com/ColinEberhardt/API/blob/eac0696/src/interface.ts#L34)*
+*Defined in [interface.ts:34](https://github.com/nkolba/API/blob/55929a2/src/interface.ts#L34)*
 
 Dispatches the intent with the Desktop Agent.
 
