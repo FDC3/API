@@ -26,7 +26,7 @@ IntentResolution provides a standard format for data returned upon resolving an 
 
 **● data**: *`Object`*
 
-*Defined in [interface.ts:31](https://github.com/nkolba/API/blob/72dc74a/src/interface.ts#L31)*
+*Defined in [interface.ts:31](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L31)*
 
 ___
 <a id="source"></a>
@@ -35,7 +35,7 @@ ___
 
 **● source**: *`String`*
 
-*Defined in [interface.ts:30](https://github.com/nkolba/API/blob/72dc74a/src/interface.ts#L30)*
+*Defined in [interface.ts:30](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L30)*
 
 ___
 <a id="version"></a>
@@ -44,7 +44,7 @@ ___
 
 **● version**: *`String`*
 
-*Defined in [interface.ts:32](https://github.com/nkolba/API/blob/72dc74a/src/interface.ts#L32)*
+*Defined in [interface.ts:32](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L32)*
 
 ___
 

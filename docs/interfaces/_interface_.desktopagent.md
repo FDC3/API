@@ -31,7 +31,7 @@ A Desktop Agent can be connected to one or more App Directories and will use dir
 
 ▸ **broadcast**(context: *[Context](../modules/_interface_.md#context)*): `void`
 
-*Defined in [interface.ts:71](https://github.com/nkolba/API/blob/72dc74a/src/interface.ts#L71)*
+*Defined in [interface.ts:74](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L74)*
 
 Publishes context to other apps on the desktop.
 
@@ -50,7 +50,7 @@ ___
 
 ▸ **contextListener**(handler: *`function`*): [Listener](_interface_.listener.md)
 
-*Defined in [interface.ts:86](https://github.com/nkolba/API/blob/72dc74a/src/interface.ts#L86)*
+*Defined in [interface.ts:89](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L89)*
 
 Listens to incoming context broadcast from the Desktop Agent.
 
@@ -69,7 +69,7 @@ ___
 
 ▸ **intentListener**(intent: *[IntentName](../modules/_interface_.md#intentname)*, handler: *`function`*): [Listener](_interface_.listener.md)
 
-*Defined in [interface.ts:81](https://github.com/nkolba/API/blob/72dc74a/src/interface.ts#L81)*
+*Defined in [interface.ts:84](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L84)*
 
 Listens to incoming Intents from the Agent.
 
@@ -89,9 +89,11 @@ ___
 
 ▸ **open**(name: *`String`*, context?: *[Context](../modules/_interface_.md#context)*): `Promise`<`void`>
 
-*Defined in [interface.ts:57](https://github.com/nkolba/API/blob/72dc74a/src/interface.ts#L57)*
+*Defined in [interface.ts:60](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L60)*
 
 Launches/links to an app by name.
+
+If a Context object is passed in, this object will be provided to the opened application via a contextListener. The Context argument is functionally equivalent to opening the target app with no context and broadcasting the context directly to it.
 
 If opening errors, it returns an `Error` with a string from the `OpenError` enumeration.
 
@@ -111,7 +113,7 @@ ___
 
 ▸ **raiseIntent**(intent: *[IntentName](../modules/_interface_.md#intentname)*, context: *[Context](../modules/_interface_.md#context)*, target?: *`String`*): `Promise`<[IntentResolution](_interface_.intentresolution.md)>
 
-*Defined in [interface.ts:76](https://github.com/nkolba/API/blob/72dc74a/src/interface.ts#L76)*
+*Defined in [interface.ts:79](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L79)*
 
 Raises an intent to the desktop agent to resolve.
 
@@ -132,7 +134,7 @@ ___
 
 ▸ **resolve**(intent: *[IntentName](../modules/_interface_.md#intentname)*, context: *[Context](../modules/_interface_.md#context)*): `Promise`<`Array`<[AppMetadata](_interface_.appmetadata.md)>>
 
-*Defined in [interface.ts:66](https://github.com/nkolba/API/blob/72dc74a/src/interface.ts#L66)*
+*Defined in [interface.ts:69](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L69)*
 
 Resolves a intent & context pair to a list of App names/metadata.
 
