@@ -52,6 +52,9 @@ interface DesktopAgent {
   /**
    * Launches/links to an app by name.
    * 
+   * If a Context object is passed in, this object will be provided to the opened application via a contextListener.
+   * The Context argument is functionally equivalent to opening the target app with no context and broadcasting the context directly to it.
+   *
    * If opening errors, it returns an `Error` with a string from the `OpenError` enumeration.
    */
   open(name: String, context?: Context): Promise<void>;

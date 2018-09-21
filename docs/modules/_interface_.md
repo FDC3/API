@@ -32,7 +32,7 @@
 
 **ΤAppIdentifier**: *`String`*
 
-*Defined in [interface.ts:3](https://github.com/nkolba/API/blob/72dc74a/src/interface.ts#L3)*
+*Defined in [interface.ts:3](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L3)*
 
 ___
 <a id="context"></a>
@@ -41,7 +41,7 @@ ___
 
 **ΤContext**: *`Object`*
 
-*Defined in [interface.ts:1](https://github.com/nkolba/API/blob/72dc74a/src/interface.ts#L1)*
+*Defined in [interface.ts:1](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L1)*
 
 ___
 <a id="intentname"></a>
@@ -50,7 +50,7 @@ ___
 
 **ΤIntentName**: *`String`*
 
-*Defined in [interface.ts:2](https://github.com/nkolba/API/blob/72dc74a/src/interface.ts#L2)*
+*Defined in [interface.ts:2](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L2)*
 
 ___
 
