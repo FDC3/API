@@ -21,7 +21,7 @@
 
 **AppNotFound**:  = "AppNotFound"
 
-*Defined in [interface.ts:6](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L6)*
+*Defined in [interface.ts:6](https://github.com/FDC3/API/blob/d58cd4b/src/interface.ts#L6)*
 
 ___
 <a id="apptimeout"></a>
@@ -30,7 +30,7 @@ ___
 
 **AppTimeout**:  = "AppTimeout"
 
-*Defined in [interface.ts:8](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L8)*
+*Defined in [interface.ts:8](https://github.com/FDC3/API/blob/d58cd4b/src/interface.ts#L8)*
 
 ___
 <a id="erroronlaunch"></a>
@@ -39,7 +39,7 @@ ___
 
 **ErrorOnLaunch**:  = "ErrorOnLaunch"
 
-*Defined in [interface.ts:7](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L7)*
+*Defined in [interface.ts:7](https://github.com/FDC3/API/blob/d58cd4b/src/interface.ts#L7)*
 
 ___
 <a id="resolverunavailable"></a>
@@ -48,7 +48,7 @@ ___
 
 **ResolverUnavailable**:  = "ResolverUnavailable"
 
-*Defined in [interface.ts:9](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L9)*
+*Defined in [interface.ts:9](https://github.com/FDC3/API/blob/d58cd4b/src/interface.ts#L9)*
 
 ___
 

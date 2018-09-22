@@ -22,7 +22,7 @@
 
 ▸ **unsubscribe**(): `any`
 
-*Defined in [interface.ts:39](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L39)*
+*Defined in [interface.ts:39](https://github.com/FDC3/API/blob/d58cd4b/src/interface.ts#L39)*
 
 Unsubscribe the listener object.
 

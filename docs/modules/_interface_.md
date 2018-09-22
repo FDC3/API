@@ -30,27 +30,27 @@
 
 ###  AppIdentifier
 
-**ΤAppIdentifier**: *`String`*
+**Ƭ AppIdentifier**: *`String`*
 
-*Defined in [interface.ts:3](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L3)*
+*Defined in [interface.ts:3](https://github.com/FDC3/API/blob/d58cd4b/src/interface.ts#L3)*
 
 ___
 <a id="context"></a>
 
 ###  Context
 
-**ΤContext**: *`Object`*
+**Ƭ Context**: *`Object`*
 
-*Defined in [interface.ts:1](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L1)*
+*Defined in [interface.ts:1](https://github.com/FDC3/API/blob/d58cd4b/src/interface.ts#L1)*
 
 ___
 <a id="intentname"></a>
 
 ###  IntentName
 
-**ΤIntentName**: *`String`*
+**Ƭ IntentName**: *`String`*
 
-*Defined in [interface.ts:2](https://github.com/nkolba/API/blob/a2fa321/src/interface.ts#L2)*
+*Defined in [interface.ts:2](https://github.com/FDC3/API/blob/d58cd4b/src/interface.ts#L2)*
 
 ___
 
