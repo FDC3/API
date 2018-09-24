@@ -56,6 +56,26 @@ interface DesktopAgent {
    * The Context argument is functionally equivalent to opening the target app with no context and broadcasting the context directly to it.
    *
    * If opening errors, it returns an `Error` with a string from the `OpenError` enumeration.
+   * 
+   *  ` //no context`
+   *    `agent.open('myApp');`
+   *   ` //with context`
+   *   ` agent.open('myApp',{version:'1.0.0',
+   *      entities:[
+          {
+            "type": "security",
+    	      "name": "Apple",
+	          "id": 
+            {  
+              "ticker" : "aapl"
+              "ISIN" : "US0378331005",
+              "CUSIP" : "037833100",
+              "FIGI" : "BBG000B9XRY4",
+              "default" : "aapl"
+            }
+          }
+      ]});
+   * `
    */
   open(name: String, context?: Context): Promise<void>;
 
