@@ -18,11 +18,18 @@ enum ResolveError {
 type ActionMap = ActionMetadata[]
 
  /**
+ * Intent descriptor
+ */ 
+interface IntentMetadata {
+  name:String;
+  displayName:String;
+}
+
+ /**
  * Provides a mapping of Apps to Intents
  */ 
 interface ActionMetadata {
-  intent:String;
-  label:String;
+  intent:IntentMetadata;
   apps:AppMetadata[];
 }
 
