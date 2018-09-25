@@ -31,7 +31,7 @@ A Desktop Agent can be connected to one or more App Directories and will use dir
 
 ▸ **broadcast**(context: *[Context](../#context)*): `void`
 
-*Defined in [interface.ts:74](/src/interface.ts#L74)*
+*Defined in [interface.ts:102](/src/interface.ts#L102)*
 
 Publishes context to other apps on the desktop.
 
@@ -50,7 +50,7 @@ ___
 
 ▸ **contextListener**(handler: *`function`*): [Listener](listener.md)
 
-*Defined in [interface.ts:89](/src/interface.ts#L89)*
+*Defined in [interface.ts:117](/src/interface.ts#L117)*
 
 Listens to incoming context broadcast from the Desktop Agent.
 
@@ -69,7 +69,7 @@ ___
 
 ▸ **intentListener**(intent: *[IntentName](../#intentname)*, handler: *`function`*): [Listener](listener.md)
 
-*Defined in [interface.ts:84](/src/interface.ts#L84)*
+*Defined in [interface.ts:112](/src/interface.ts#L112)*
 
 Listens to incoming Intents from the Agent.
 
@@ -89,7 +89,7 @@ ___
 
 ▸ **open**(name: *`String`*, context?: *[Context](../#context)*): `Promise`<`void`>
 
-*Defined in [interface.ts:60](/src/interface.ts#L60)*
+*Defined in [interface.ts:87](/src/interface.ts#L87)*
 
 Launches/links to an app by name.
 
@@ -113,7 +113,7 @@ ___
 
 ▸ **raiseIntent**(intent: *[IntentName](../#intentname)*, context: *[Context](../#context)*, target?: *`String`*): `Promise`<[IntentResolution](intentresolution.md)>
 
-*Defined in [interface.ts:79](/src/interface.ts#L79)*
+*Defined in [interface.ts:107](/src/interface.ts#L107)*
 
 Raises an intent to the desktop agent to resolve.
 
@@ -132,22 +132,22 @@ ___
 
 ###  resolve
 
-▸ **resolve**(intent: *[IntentName](../#intentname)*, context: *[Context](../#context)*): `Promise`<`Array`<[AppMetadata](appmetadata.md)>>
+▸ **resolve**(intent: *[IntentName](../#intentname)*, context?: *[Context](../#context)*): `Promise`<`Array`<[ActionMetadata](actionmetadata.md)>>
 
-*Defined in [interface.ts:69](/src/interface.ts#L69)*
+*Defined in [interface.ts:97](/src/interface.ts#L97)*
 
-Resolves a intent & context pair to a list of App names/metadata.
+Resolves an intent & context pair to a mapping of Intents and Apps (action metadata).
 
-Resolve is effectively granting programmatic access to the Desktop Agent's resolver. Returns a promise that resolves to an Array. The resolved dataset & metadata is Desktop Agent-specific. If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
+Resolve is effectively granting programmatic access to the Desktop Agent's resolver. Returns a promise that resolves to an Array. The resolved dataset & metadata is Desktop Agent-specific. If intent argument is falsey, then all possible intents - and apps corresponding to the intents - are resolved for the provided context. If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
 
 **Parameters:**
 
 | Param | Type |
 | ------ | ------ |
 | intent | [IntentName](../#intentname) |
-| context | [Context](../#context) |
+| `Optional` context | [Context](../#context) |
 
-**Returns:** `Promise`<`Array`<[AppMetadata](appmetadata.md)>>
+**Returns:** `Promise`<`Array`<[ActionMetadata](actionmetadata.md)>>
 
 ___
 

@@ -4,6 +4,16 @@
 
 IntentResolution provides a standard format for data returned upon resolving an intent.
 
+```javascript
+//resolve a "Chain" type intent
+var intentR = await agent.raiseIntent("intentName", context);
+//resolve a "Client-Service" type intent with data response
+var intentR = await agent.raiseIntent("intentName", context);
+if (intentR.data){
+ var dataR = await intentR.data();
+}
+```
+
 ## Hierarchy
 
 **IntentResolution**
@@ -24,9 +34,14 @@ IntentResolution provides a standard format for data returned upon resolving an 
 
 ### `<Optional>` data
 
-**● data**: *`Object`*
+**● data**: *`function`*
 
-*Defined in [interface.ts:31](/src/interface.ts#L31)*
+*Defined in [interface.ts:58](/src/interface.ts#L58)*
+
+#### Type declaration
+▸(): `Promise`<`Object`>
+
+**Returns:** `Promise`<`Object`>
 
 ___
 <a id="source"></a>
@@ -35,7 +50,7 @@ ___
 
 **● source**: *`String`*
 
-*Defined in [interface.ts:30](/src/interface.ts#L30)*
+*Defined in [interface.ts:57](/src/interface.ts#L57)*
 
 ___
 <a id="version"></a>
@@ -44,7 +59,7 @@ ___
 
 **● version**: *`String`*
 
-*Defined in [interface.ts:32](/src/interface.ts#L32)*
+*Defined in [interface.ts:59](/src/interface.ts#L59)*
 
 ___
 
