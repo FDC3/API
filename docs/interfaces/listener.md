@@ -22,7 +22,7 @@
 
 ▸ **unsubscribe**(): `any`
 
-*Defined in [interface.ts:66](/src/interface.ts#L66)*
+*Defined in [interface.ts:64](/src/interface.ts#L64)*
 
 Unsubscribe the listener object.
 

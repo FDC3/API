@@ -48,14 +48,12 @@ interface AppMetadata {
  * var intentR = await agent.raiseIntent("intentName", context);
  * //resolve a "Client-Service" type intent with data response
  * var intentR = await agent.raiseIntent("intentName", context);
- * if (intentR.data){
- *  var dataR = await intentR.data();
- * }
+ * var dataR = intentR.data;
  * ```
  */
 interface IntentResolution {
   source: String;
-  data?: ()=> Promise<Object>; 
+  data?: Object; 
   version: String;
 }
 

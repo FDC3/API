@@ -9,9 +9,7 @@ IntentResolution provides a standard format for data returned upon resolving an 
 var intentR = await agent.raiseIntent("intentName", context);
 //resolve a "Client-Service" type intent with data response
 var intentR = await agent.raiseIntent("intentName", context);
-if (intentR.data){
- var dataR = await intentR.data();
-}
+var dataR = intentR.data;
 ```
 
 ## Hierarchy
@@ -34,14 +32,9 @@ if (intentR.data){
 
 ### `<Optional>` data
 
-**● data**: *`function`*
+**● data**: *`Object`*
 
-*Defined in [interface.ts:58](/src/interface.ts#L58)*
-
-#### Type declaration
-▸(): `Promise`<`Object`>
-
-**Returns:** `Promise`<`Object`>
+*Defined in [interface.ts:56](/src/interface.ts#L56)*
 
 ___
 <a id="source"></a>
@@ -50,7 +43,7 @@ ___
 
 **● source**: *`String`*
 
-*Defined in [interface.ts:57](/src/interface.ts#L57)*
+*Defined in [interface.ts:55](/src/interface.ts#L55)*
 
 ___
 <a id="version"></a>
@@ -59,7 +52,7 @@ ___
 
 **● version**: *`String`*
 
-*Defined in [interface.ts:59](/src/interface.ts#L59)*
+*Defined in [interface.ts:57](/src/interface.ts#L57)*
 
 ___
 
