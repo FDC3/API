@@ -15,6 +15,24 @@ enum ResolveError {
   ResolverTimeout = "ResolverTimeout"
 }
 
+type ActionMap = ActionMetadata[]
+
+ /**
+ * Intent descriptor
+ */ 
+interface IntentMetadata {
+  name:String;
+  displayName:String;
+}
+
+ /**
+ * Provides a mapping of Apps to Intents
+ */ 
+interface ActionMetadata {
+  intent:IntentMetadata;
+  apps:AppMetadata[];
+}
+
 
 /**
  * App metadata is Desktop Agent specific - but should support a name property.
@@ -25,6 +43,13 @@ interface AppMetadata {
 
 /**
  * IntentResolution provides a standard format for data returned upon resolving an intent.
+ * ```javascript
+ * //resolve a "Chain" type intent
+ * var intentR = await agent.raiseIntent("intentName", context);
+ * //resolve a "Client-Service" type intent with data response
+ * var intentR = await agent.raiseIntent("intentName", context);
+ * var dataR = intentR.data;
+ * ```
  */
 interface IntentResolution {
   source: String;
@@ -60,13 +85,14 @@ interface DesktopAgent {
   open(name: String, context?: Context): Promise<void>;
 
   /**
-   * Resolves a intent & context pair to a list of App names/metadata.
+   * Resolves an intent & context pair to a mapping of Intents and Apps (action metadata).
    *
    * Resolve is effectively granting programmatic access to the Desktop Agent's resolver. 
    * Returns a promise that resolves to an Array. The resolved dataset & metadata is Desktop Agent-specific.
+   * If intent argument is falsey, then all possible intents - and apps corresponding to the intents - are resolved for the provided context.
    * If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
    */
-  resolve(intent: IntentName, context: Context): Promise<Array<AppMetadata>>;
+  resolve(intent: IntentName, context?: Context): Promise<Array<ActionMetadata>>;
 
   /**
    * Publishes context to other apps on the desktop.

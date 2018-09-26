@@ -23,13 +23,16 @@ When making changes to the TypeScript interfaces, run `yarn test` to ensure ther
 
 ### Interfaces
 
+* [ActionMetadata](interfaces/actionmetadata.md)
 * [AppMetadata](interfaces/appmetadata.md)
 * [DesktopAgent](interfaces/desktopagent.md)
+* [IntentMetadata](interfaces/intentmetadata.md)
 * [IntentResolution](interfaces/intentresolution.md)
 * [Listener](interfaces/listener.md)
 
 ### Type aliases
 
+* [ActionMap](#actionmap)
 * [AppIdentifier](#appidentifier)
 * [Context](#context)
 * [IntentName](#intentname)
@@ -38,6 +41,15 @@ When making changes to the TypeScript interfaces, run `yarn test` to ensure ther
 
 ## Type aliases
 
+<a id="actionmap"></a>
+
+###  ActionMap
+
+**Ƭ ActionMap**: *[ActionMetadata](interfaces/actionmetadata.md)[]*
+
+*Defined in [interface.ts:18](/src/interface.ts#L18)*
+
+___
 <a id="appidentifier"></a>
 
 ###  AppIdentifier
