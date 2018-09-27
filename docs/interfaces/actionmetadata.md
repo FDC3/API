@@ -25,7 +25,7 @@ Provides a mapping of Apps to Intents
 
 **● apps**: *[AppMetadata](appmetadata.md)[]*
 
-*Defined in [interface.ts:33](/src/interface.ts#L33)*
+*Defined in [interface.ts:31](/src/interface.ts#L31)*
 
 ___
 <a id="intent"></a>
@@ -34,7 +34,7 @@ ___
 
 **● intent**: *[IntentMetadata](intentmetadata.md)*
 
-*Defined in [interface.ts:32](/src/interface.ts#L32)*
+*Defined in [interface.ts:30](/src/interface.ts#L30)*
 
 ___
 

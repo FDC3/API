@@ -33,9 +33,7 @@ When making changes to the TypeScript interfaces, run `yarn test` to ensure ther
 ### Type aliases
 
 * [ActionMap](#actionmap)
-* [AppIdentifier](#appidentifier)
 * [Context](#context)
-* [IntentName](#intentname)
 
 ---
 
@@ -47,16 +45,7 @@ When making changes to the TypeScript interfaces, run `yarn test` to ensure ther
 
 **Ƭ ActionMap**: *[ActionMetadata](interfaces/actionmetadata.md)[]*
 
-*Defined in [interface.ts:18](/src/interface.ts#L18)*
-
-___
-<a id="appidentifier"></a>
-
-###  AppIdentifier
-
-**Ƭ AppIdentifier**: *`String`*
-
-*Defined in [interface.ts:3](/src/interface.ts#L3)*
+*Defined in [interface.ts:16](/src/interface.ts#L16)*
 
 ___
 <a id="context"></a>
@@ -66,15 +55,6 @@ ___
 **Ƭ Context**: *`Object`*
 
 *Defined in [interface.ts:1](/src/interface.ts#L1)*
-
-___
-<a id="intentname"></a>
-
-###  IntentName
-
-**Ƭ IntentName**: *`String`*
-
-*Defined in [interface.ts:2](/src/interface.ts#L2)*
 
 ___
 

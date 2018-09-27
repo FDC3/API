@@ -25,7 +25,7 @@ Intent descriptor
 
 **● displayName**: *`String`*
 
-*Defined in [interface.ts:25](/src/interface.ts#L25)*
+*Defined in [interface.ts:23](/src/interface.ts#L23)*
 
 ___
 <a id="name"></a>
@@ -34,7 +34,7 @@ ___
 
 **● name**: *`String`*
 
-*Defined in [interface.ts:24](/src/interface.ts#L24)*
+*Defined in [interface.ts:22](/src/interface.ts#L22)*
 
 ___
 
