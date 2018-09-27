@@ -82,25 +82,26 @@ interface DesktopAgent {
    *
    * If opening errors, it returns an `Error` with a string from the `OpenError` enumeration.
    * 
-   *  ` //no context`
-   *    `agent.open('myApp');`
-   *   ` //with context`
-   *   ` agent.open('myApp',{version:'1.0.0',
+   *  ```javascript
+   *     //no context
+   *     agent.open('myApp');
+   *     //with context
+   *     agent.open('myApp',{version:'1.0.0',
    *      entities:[
-          {
-            "type": "security",
-    	      "name": "Apple",
-	          "id": 
-            {  
-              "ticker" : "aapl"
-              "ISIN" : "US0378331005",
-              "CUSIP" : "037833100",
-              "FIGI" : "BBG000B9XRY4",
-              "default" : "aapl"
-            }
-          }
-      ]});
-   * `
+   *        {
+   *         "type": "security",
+   * 	      "name": "Apple",
+	 *         "id": 
+   *         {  
+   *           "ticker" : "aapl"
+   *           "ISIN" : "US0378331005",
+   *           "CUSIP" : "037833100",
+   *          "FIGI" : "BBG000B9XRY4",
+   *           "default" : "aapl"
+   *         }
+   *       }
+   *   ]});
+   * ```
    */
   open(name: String, context?: Context): Promise<void>;
 

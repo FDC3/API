@@ -31,7 +31,7 @@ A Desktop Agent can be connected to one or more App Directories and will use dir
 
 ▸ **broadcast**(context: *[Context](../#context)*): `void`
 
-*Defined in [interface.ts:100](/src/interface.ts#L100)*
+*Defined in [interface.ts:121](/src/interface.ts#L121)*
 
 Publishes context to other apps on the desktop.
 
@@ -50,7 +50,7 @@ ___
 
 ▸ **contextListener**(handler: *`function`*): [Listener](listener.md)
 
-*Defined in [interface.ts:115](/src/interface.ts#L115)*
+*Defined in [interface.ts:136](/src/interface.ts#L136)*
 
 Listens to incoming context broadcast from the Desktop Agent.
 
@@ -69,7 +69,7 @@ ___
 
 ▸ **intentListener**(intent: *[IntentName](../#intentname)*, handler: *`function`*): [Listener](listener.md)
 
-*Defined in [interface.ts:110](/src/interface.ts#L110)*
+*Defined in [interface.ts:131](/src/interface.ts#L131)*
 
 Listens to incoming Intents from the Agent.
 
@@ -89,13 +89,34 @@ ___
 
 ▸ **open**(name: *`String`*, context?: *[Context](../#context)*): `Promise`<`void`>
 
-*Defined in [interface.ts:85](/src/interface.ts#L85)*
+*Defined in [interface.ts:106](/src/interface.ts#L106)*
 
 Launches/links to an app by name.
 
 If a Context object is passed in, this object will be provided to the opened application via a contextListener. The Context argument is functionally equivalent to opening the target app with no context and broadcasting the context directly to it.
 
 If opening errors, it returns an `Error` with a string from the `OpenError` enumeration.
+
+```javascript
+//no context
+    agent.open('myApp');
+    //with context
+    agent.open('myApp',{version:'1.0.0',
+     entities:[
+       {
+        "type": "security",
+          "name": "Apple",
+        "id":
+        {
+          "ticker" : "aapl"
+          "ISIN" : "US0378331005",
+          "CUSIP" : "037833100",
+         "FIGI" : "BBG000B9XRY4",
+          "default" : "aapl"
+        }
+      }
+  ]});
+```
 
 **Parameters:**
 
@@ -113,7 +134,7 @@ ___
 
 ▸ **raiseIntent**(intent: *[IntentName](../#intentname)*, context: *[Context](../#context)*, target?: *`String`*): `Promise`<[IntentResolution](intentresolution.md)>
 
-*Defined in [interface.ts:105](/src/interface.ts#L105)*
+*Defined in [interface.ts:126](/src/interface.ts#L126)*
 
 Raises an intent to the desktop agent to resolve.
 
@@ -134,7 +155,7 @@ ___
 
 ▸ **resolve**(intent: *[IntentName](../#intentname)*, context?: *[Context](../#context)*): `Promise`<`Array`<[ActionMetadata](actionmetadata.md)>>
 
-*Defined in [interface.ts:95](/src/interface.ts#L95)*
+*Defined in [interface.ts:116](/src/interface.ts#L116)*
 
 Resolves an intent & context pair to a mapping of Intents and Apps (action metadata).
 
