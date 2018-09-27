@@ -34,7 +34,7 @@ var dataR = intentR.data;
 
 **● data**: *`Object`*
 
-*Defined in [interface.ts:56](/src/interface.ts#L56)*
+*Defined in [interface.ts:54](/src/interface.ts#L54)*
 
 ___
 <a id="source"></a>
@@ -43,7 +43,7 @@ ___
 
 **● source**: *`String`*
 
-*Defined in [interface.ts:55](/src/interface.ts#L55)*
+*Defined in [interface.ts:53](/src/interface.ts#L53)*
 
 ___
 <a id="version"></a>
@@ -52,7 +52,7 @@ ___
 
 **● version**: *`String`*
 
-*Defined in [interface.ts:57](/src/interface.ts#L57)*
+*Defined in [interface.ts:55](/src/interface.ts#L55)*
 
 ___
 

@@ -1,6 +1,4 @@
 type Context = Object;
-type IntentName = String;
-type AppIdentifier = String;
 
 enum OpenError {
   AppNotFound = "AppNotFound",
@@ -38,7 +36,7 @@ interface ActionMetadata {
  * App metadata is Desktop Agent specific - but should support a name property.
  */
 interface AppMetadata {
-  name: AppIdentifier;
+  name: String;
 }
 
 /**
@@ -92,7 +90,7 @@ interface DesktopAgent {
    * If intent argument is falsey, then all possible intents - and apps corresponding to the intents - are resolved for the provided context.
    * If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
    */
-  resolve(intent: IntentName, context?: Context): Promise<Array<ActionMetadata>>;
+  resolve(intent: String, context?: Context): Promise<Array<ActionMetadata>>;
 
   /**
    * Publishes context to other apps on the desktop.
@@ -102,12 +100,12 @@ interface DesktopAgent {
   /**
    * Raises an intent to the desktop agent to resolve.
    */
-  raiseIntent(intent: IntentName, context: Context, target?: String): Promise<IntentResolution>;
+  raiseIntent(intent: String, context: Context, target?: String): Promise<IntentResolution>;
 
   /**
    * Listens to incoming Intents from the Agent.
    */
-  intentListener(intent: IntentName, handler: (context: Context) => void): Listener;
+  intentListener(intent: String, handler: (context: Context) => void): Listener;
 
   /**
    * Listens to incoming context broadcast from the Desktop Agent.

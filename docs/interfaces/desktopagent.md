@@ -31,7 +31,7 @@ A Desktop Agent can be connected to one or more App Directories and will use dir
 
 ▸ **broadcast**(context: *[Context](../#context)*): `void`
 
-*Defined in [interface.ts:100](/src/interface.ts#L100)*
+*Defined in [interface.ts:98](/src/interface.ts#L98)*
 
 Publishes context to other apps on the desktop.
 
@@ -50,7 +50,7 @@ ___
 
 ▸ **contextListener**(handler: *`function`*): [Listener](listener.md)
 
-*Defined in [interface.ts:115](/src/interface.ts#L115)*
+*Defined in [interface.ts:113](/src/interface.ts#L113)*
 
 Listens to incoming context broadcast from the Desktop Agent.
 
@@ -67,9 +67,9 @@ ___
 
 ###  intentListener
 
-▸ **intentListener**(intent: *[IntentName](../#intentname)*, handler: *`function`*): [Listener](listener.md)
+▸ **intentListener**(intent: *`String`*, handler: *`function`*): [Listener](listener.md)
 
-*Defined in [interface.ts:110](/src/interface.ts#L110)*
+*Defined in [interface.ts:108](/src/interface.ts#L108)*
 
 Listens to incoming Intents from the Agent.
 
@@ -77,7 +77,7 @@ Listens to incoming Intents from the Agent.
 
 | Param | Type |
 | ------ | ------ |
-| intent | [IntentName](../#intentname) |
+| intent | `String` |
 | handler | `function` |
 
 **Returns:** [Listener](listener.md)
@@ -89,7 +89,7 @@ ___
 
 ▸ **open**(name: *`String`*, context?: *[Context](../#context)*): `Promise`<`void`>
 
-*Defined in [interface.ts:85](/src/interface.ts#L85)*
+*Defined in [interface.ts:83](/src/interface.ts#L83)*
 
 Launches/links to an app by name.
 
@@ -111,9 +111,9 @@ ___
 
 ###  raiseIntent
 
-▸ **raiseIntent**(intent: *[IntentName](../#intentname)*, context: *[Context](../#context)*, target?: *`String`*): `Promise`<[IntentResolution](intentresolution.md)>
+▸ **raiseIntent**(intent: *`String`*, context: *[Context](../#context)*, target?: *`String`*): `Promise`<[IntentResolution](intentresolution.md)>
 
-*Defined in [interface.ts:105](/src/interface.ts#L105)*
+*Defined in [interface.ts:103](/src/interface.ts#L103)*
 
 Raises an intent to the desktop agent to resolve.
 
@@ -121,7 +121,7 @@ Raises an intent to the desktop agent to resolve.
 
 | Param | Type |
 | ------ | ------ |
-| intent | [IntentName](../#intentname) |
+| intent | `String` |
 | context | [Context](../#context) |
 | `Optional` target | `String` |
 
@@ -132,9 +132,9 @@ ___
 
 ###  resolve
 
-▸ **resolve**(intent: *[IntentName](../#intentname)*, context?: *[Context](../#context)*): `Promise`<`Array`<[ActionMetadata](actionmetadata.md)>>
+▸ **resolve**(intent: *`String`*, context?: *[Context](../#context)*): `Promise`<`Array`<[ActionMetadata](actionmetadata.md)>>
 
-*Defined in [interface.ts:95](/src/interface.ts#L95)*
+*Defined in [interface.ts:93](/src/interface.ts#L93)*
 
 Resolves an intent & context pair to a mapping of Intents and Apps (action metadata).
 
@@ -144,7 +144,7 @@ Resolve is effectively granting programmatic access to the Desktop Agent's resol
 
 | Param | Type |
 | ------ | ------ |
-| intent | [IntentName](../#intentname) |
+| intent | `String` |
 | `Optional` context | [Context](../#context) |
 
 **Returns:** `Promise`<`Array`<[ActionMetadata](actionmetadata.md)>>
