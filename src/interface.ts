@@ -87,7 +87,7 @@ interface DesktopAgent {
    *     agent.open('myApp',{version:'1.0.0',
    *      entities:[
    *        {
-   *         "type": "security",
+   *         "type": "Security",
    * 	      "name": "Apple",
 	 *         "id": 
    *         {  
@@ -110,16 +110,83 @@ interface DesktopAgent {
    * Returns a promise that resolves to an Array. The resolved dataset & metadata is Desktop Agent-specific.
    * If intent argument is falsey, then all possible intents - and apps corresponding to the intents - are resolved for the provided context.
    * If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
+   * 
+   * ```javascript
+   * //find what Apps can support SartChat with the given context structure
+   * var intentR = await agent.resolve("StartChat",{version:"1.0.0",entities:[
+   *    {
+   *       "type":"Contact",
+   *       "name":"Nick",
+   *       "id":{
+   *            "default":"nick@openfin.co",
+   *            "email":"nick@openfin.co"
+   *       }
+   *    }
+   * ]});
+   * 
+   * //find what Intents and Apps are supported for a given context
+   * var actionR = await agent.resolve(false,{version:"1.0.0",entities:[
+   *    {
+   *       "type":"Contact",
+   *       "name":"Nick",
+   *       "id":{
+   *            "default":"nick@openfin.co",
+   *            "email":"nick@openfin.co"
+   *       }
+   *    }
+   * ]});
+   * ```
    */
   resolve(intent: String, context?: Context): Promise<Array<ActionMetadata>>;
 
   /**
    * Publishes context to other apps on the desktop.
+   * ```javascript
+   *  agent.broadcast({version:'1.0.0',
+   *      entities:[
+   *        {
+   *         "type": "Security",
+   * 	      "name": "Apple",
+	 *         "id": 
+   *         {  
+   *           "ticker" : "aapl"
+   *           "ISIN" : "US0378331005",
+   *           "CUSIP" : "037833100",
+   *          "FIGI" : "BBG000B9XRY4",
+   *           "default" : "aapl"
+   *         }
+   *       }
+   *   ]});
+   * ```
    */
   broadcast(context: Context): void;
 
   /**
    * Raises an intent to the desktop agent to resolve.
+   * ```javascript
+   * //raise an intent to start a chat with a given contact
+   * var intentR = await agent.resolve("StartChat",{version:"1.0.0",entities:[
+   *    {
+   *       "type":"Contact",
+   *       "name":"Nick",
+   *       "id":{
+   *            "default":"nick@openfin.co",
+   *            "email":"nick@openfin.co"
+   *       }
+   *    }
+   * ]});
+   * //use the IntentResolution object to target the same chat app with a new context
+   * agent.resolve("StartChat",{version:"1.0.0",entities:[
+   *    {
+   *       "type":"Contact",
+   *       "name":"Joe",
+   *       "id":{
+   *            "default":"joe@fintech.com",
+   *            "email":"joe@fintech.com"
+   *       }
+   *    }
+   * ]},intentR.source);
+   * ```
    */
   raiseIntent(intent: String, context: Context, target?: String): Promise<IntentResolution>;
 
