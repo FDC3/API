@@ -31,26 +31,12 @@ A Desktop Agent can be connected to one or more App Directories and will use dir
 
 ▸ **broadcast**(context: *[Context](../#context)*): `void`
 
-*Defined in [interface.ts:162](/src/interface.ts#L162)*
+*Defined in [interface.ts:116](/src/interface.ts#L116)*
 
 Publishes context to other apps on the desktop.
 
 ```javascript
-agent.broadcast({version:'1.0.0',
-     entities:[
-       {
-        "type": "Security",
-          "name": "Apple",
-        "id":
-        {
-          "ticker" : "aapl"
-          "ISIN" : "US0378331005",
-          "CUSIP" : "037833100",
-         "FIGI" : "BBG000B9XRY4",
-          "default" : "aapl"
-        }
-      }
-  ]});
+agent.broadcast(context);
 ```
 
 **Parameters:**
@@ -68,7 +54,7 @@ ___
 
 ▸ **contextListener**(handler: *`function`*): [Listener](listener.md)
 
-*Defined in [interface.ts:201](/src/interface.ts#L201)*
+*Defined in [interface.ts:137](/src/interface.ts#L137)*
 
 Listens to incoming context broadcast from the Desktop Agent.
 
@@ -87,7 +73,7 @@ ___
 
 ▸ **intentListener**(intent: *`String`*, handler: *`function`*): [Listener](listener.md)
 
-*Defined in [interface.ts:196](/src/interface.ts#L196)*
+*Defined in [interface.ts:132](/src/interface.ts#L132)*
 
 Listens to incoming Intents from the Agent.
 
@@ -107,7 +93,7 @@ ___
 
 ▸ **open**(name: *`String`*, context?: *[Context](../#context)*): `Promise`<`void`>
 
-*Defined in [interface.ts:104](/src/interface.ts#L104)*
+*Defined in [interface.ts:90](/src/interface.ts#L90)*
 
 Launches/links to an app by name.
 
@@ -119,21 +105,7 @@ If opening errors, it returns an `Error` with a string from the `OpenError` enum
 //no context
     agent.open('myApp');
     //with context
-    agent.open('myApp',{version:'1.0.0',
-     entities:[
-       {
-        "type": "Security",
-          "name": "Apple",
-        "id":
-        {
-          "ticker" : "aapl"
-          "ISIN" : "US0378331005",
-          "CUSIP" : "037833100",
-         "FIGI" : "BBG000B9XRY4",
-          "default" : "aapl"
-        }
-      }
-  ]});
+    agent.open('myApp', context);
 ```
 
 **Parameters:**
@@ -152,33 +124,15 @@ ___
 
 ▸ **raiseIntent**(intent: *`String`*, context: *[Context](../#context)*, target?: *`String`*): `Promise`<[IntentResolution](intentresolution.md)>
 
-*Defined in [interface.ts:191](/src/interface.ts#L191)*
+*Defined in [interface.ts:127](/src/interface.ts#L127)*
 
 Raises an intent to the desktop agent to resolve.
 
 ```javascript
 //raise an intent to start a chat with a given contact
-var intentR = await agent.resolve("StartChat",{version:"1.0.0",entities:[
-   {
-      "type":"Contact",
-      "name":"Nick",
-      "id":{
-           "default":"nick@openfin.co",
-           "email":"nick@openfin.co"
-      }
-   }
-]});
+var intentR = await agent.resolve("StartChat", context);
 //use the IntentResolution object to target the same chat app with a new context
-agent.resolve("StartChat",{version:"1.0.0",entities:[
-   {
-      "type":"Contact",
-      "name":"Joe",
-      "id":{
-           "default":"joe@fintech.com",
-           "email":"joe@fintech.com"
-      }
-   }
-]},intentR.source);
+agent.resolve("StartChat", newContext, intentR.source);
 ```
 
 **Parameters:**
@@ -198,7 +152,7 @@ ___
 
 ▸ **resolve**(intent: *`String`*, context?: *[Context](../#context)*): `Promise`<`Array`<[ActionMetadata](actionmetadata.md)>>
 
-*Defined in [interface.ts:140](/src/interface.ts#L140)*
+*Defined in [interface.ts:108](/src/interface.ts#L108)*
 
 Resolves an intent & context pair to a mapping of Intents and Apps (action metadata).
 
@@ -206,28 +160,10 @@ Resolve is effectively granting programmatic access to the Desktop Agent's resol
 
 ```javascript
 //find what Apps can support SartChat with the given context structure
-var intentR = await agent.resolve("StartChat",{version:"1.0.0",entities:[
-   {
-      "type":"Contact",
-      "name":"Nick",
-      "id":{
-           "default":"nick@openfin.co",
-           "email":"nick@openfin.co"
-      }
-   }
-]});
+var intentR = await agent.resolve("StartChat", context);
 
 //find what Intents and Apps are supported for a given context
-var actionR = await agent.resolve(false,{version:"1.0.0",entities:[
-   {
-      "type":"Contact",
-      "name":"Nick",
-      "id":{
-           "default":"nick@openfin.co",
-           "email":"nick@openfin.co"
-      }
-   }
-]});
+var actionR = await agent.resolve(false, context);
 ```
 
 **Parameters:**

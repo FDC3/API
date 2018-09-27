@@ -84,21 +84,7 @@ interface DesktopAgent {
    *     //no context
    *     agent.open('myApp');
    *     //with context
-   *     agent.open('myApp',{version:'1.0.0',
-   *      entities:[
-   *        {
-   *         "type": "Security",
-   * 	      "name": "Apple",
-	 *         "id": 
-   *         {  
-   *           "ticker" : "aapl"
-   *           "ISIN" : "US0378331005",
-   *           "CUSIP" : "037833100",
-   *          "FIGI" : "BBG000B9XRY4",
-   *           "default" : "aapl"
-   *         }
-   *       }
-   *   ]});
+   *     agent.open('myApp', context);
    * ```
    */
   open(name: String, context?: Context): Promise<void>;
@@ -113,28 +99,10 @@ interface DesktopAgent {
    * 
    * ```javascript
    * //find what Apps can support SartChat with the given context structure
-   * var intentR = await agent.resolve("StartChat",{version:"1.0.0",entities:[
-   *    {
-   *       "type":"Contact",
-   *       "name":"Nick",
-   *       "id":{
-   *            "default":"nick@openfin.co",
-   *            "email":"nick@openfin.co"
-   *       }
-   *    }
-   * ]});
+   * var intentR = await agent.resolve("StartChat", context);
    * 
    * //find what Intents and Apps are supported for a given context
-   * var actionR = await agent.resolve(false,{version:"1.0.0",entities:[
-   *    {
-   *       "type":"Contact",
-   *       "name":"Nick",
-   *       "id":{
-   *            "default":"nick@openfin.co",
-   *            "email":"nick@openfin.co"
-   *       }
-   *    }
-   * ]});
+   * var actionR = await agent.resolve(false, context);
    * ```
    */
   resolve(intent: String, context?: Context): Promise<Array<ActionMetadata>>;
@@ -142,21 +110,7 @@ interface DesktopAgent {
   /**
    * Publishes context to other apps on the desktop.
    * ```javascript
-   *  agent.broadcast({version:'1.0.0',
-   *      entities:[
-   *        {
-   *         "type": "Security",
-   * 	      "name": "Apple",
-	 *         "id": 
-   *         {  
-   *           "ticker" : "aapl"
-   *           "ISIN" : "US0378331005",
-   *           "CUSIP" : "037833100",
-   *          "FIGI" : "BBG000B9XRY4",
-   *           "default" : "aapl"
-   *         }
-   *       }
-   *   ]});
+   *  agent.broadcast(context);
    * ```
    */
   broadcast(context: Context): void;
@@ -165,27 +119,9 @@ interface DesktopAgent {
    * Raises an intent to the desktop agent to resolve.
    * ```javascript
    * //raise an intent to start a chat with a given contact
-   * var intentR = await agent.resolve("StartChat",{version:"1.0.0",entities:[
-   *    {
-   *       "type":"Contact",
-   *       "name":"Nick",
-   *       "id":{
-   *            "default":"nick@openfin.co",
-   *            "email":"nick@openfin.co"
-   *       }
-   *    }
-   * ]});
+   * var intentR = await agent.resolve("StartChat", context);
    * //use the IntentResolution object to target the same chat app with a new context
-   * agent.resolve("StartChat",{version:"1.0.0",entities:[
-   *    {
-   *       "type":"Contact",
-   *       "name":"Joe",
-   *       "id":{
-   *            "default":"joe@fintech.com",
-   *            "email":"joe@fintech.com"
-   *       }
-   *    }
-   * ]},intentR.source);
+   * agent.resolve("StartChat", newContext, intentR.source);
    * ```
    */
   raiseIntent(intent: String, context: Context, target?: String): Promise<IntentResolution>;
