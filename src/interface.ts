@@ -79,6 +79,13 @@ interface DesktopAgent {
    * The Context argument is functionally equivalent to opening the target app with no context and broadcasting the context directly to it.
    *
    * If opening errors, it returns an `Error` with a string from the `OpenError` enumeration.
+   * 
+   *  ```javascript
+   *     //no context
+   *     agent.open('myApp');
+   *     //with context
+   *     agent.open('myApp', context);
+   * ```
    */
   open(name: String, context?: Context): Promise<void>;
 
@@ -89,16 +96,45 @@ interface DesktopAgent {
    * Returns a promise that resolves to an Array. The resolved dataset & metadata is Desktop Agent-specific.
    * If intent argument is falsey, then all possible intents - and apps corresponding to the intents - are resolved for the provided context.
    * If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
+   * 
+   * ```javascript
+   * // find what intents and apps are supported for a given context
+   * const actionMetadata = await agent.resolve(null, context);
+   * // e.g.:
+   * // [{
+   * //     intent: { name: "StartCall", displayName: "Call" },
+   * //     apps: [{ name: "Skype" }]
+   * // },
+   * // {
+   * //     intent: { name: "StartChat", displayName: "Chat" },
+   * //     apps: [{ name: "Skype" }, { name: "Symphony" }, { name: "Slack" }]
+   * // }];
+   * 
+   * // select a particular intent to raise, targeted at a particular app 
+   * const selectedAction = actionMetadata[1];
+   * const selectedApp = selectedAction.apps[0];
+   * 
+   * await agent.raiseIntent(selectedAction.intent.name, context, selectedApp.name);
+   * ```
    */
   resolve(intent: String, context?: Context): Promise<Array<ActionMetadata>>;
 
   /**
    * Publishes context to other apps on the desktop.
+   * ```javascript
+   *  agent.broadcast(context);
+   * ```
    */
   broadcast(context: Context): void;
 
   /**
    * Raises an intent to the desktop agent to resolve.
+   * ```javascript
+   * //raise an intent to start a chat with a given contact
+   * const intentR = await agent.resolve("StartChat", context);
+   * //use the IntentResolution object to target the same chat app with a new context
+   * agent.raiseIntent("StartChat", newContext, intentR.source);
+   * ```
    */
   raiseIntent(intent: String, context: Context, target?: String): Promise<IntentResolution>;
 
