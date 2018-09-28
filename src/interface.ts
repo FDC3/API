@@ -98,11 +98,23 @@ interface DesktopAgent {
    * If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
    * 
    * ```javascript
-   * //find what Apps can support SartChat with the given context structure
-   * var intentR = await agent.resolve("StartChat", context);
+   * // find what intents and apps are supported for a given context
+   * const actionMetadata = await agent.resolve(null, context);
+   * // e.g.:
+   * // [{
+   * //     intent: { name: "StartCall", displayName: "Call" },
+   * //     apps: [{ name: "Skype" }]
+   * // },
+   * // {
+   * //     intent: { name: "StartChat", displayName: "Chat" },
+   * //     apps: [{ name: "Skype" }, { name: "Symphony" }, { name: "Slack" }]
+   * // }];
    * 
-   * //find what Intents and Apps are supported for a given context
-   * var actionR = await agent.resolve(false, context);
+   * // select a particular intent to raise, targeted at a particular app 
+   * const selectedAction = actionMetadata[1];
+   * const selectedApp = selectedAction.apps[0];
+   * 
+   * await agent.raiseIntent(selectedAction.intent.name, context, selectedApp.name);
    * ```
    */
   resolve(intent: String, context?: Context): Promise<Array<ActionMetadata>>;
@@ -119,9 +131,9 @@ interface DesktopAgent {
    * Raises an intent to the desktop agent to resolve.
    * ```javascript
    * //raise an intent to start a chat with a given contact
-   * var intentR = await agent.resolve("StartChat", context);
+   * const intentR = await agent.resolve("StartChat", context);
    * //use the IntentResolution object to target the same chat app with a new context
-   * agent.resolve("StartChat", newContext, intentR.source);
+   * agent.raiseIntent("StartChat", newContext, intentR.source);
    * ```
    */
   raiseIntent(intent: String, context: Context, target?: String): Promise<IntentResolution>;
