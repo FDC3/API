@@ -16,10 +16,10 @@ A Desktop Agent can be connected to one or more App Directories and will use dir
 
 * [broadcast](desktopagent.md#broadcast)
 * [contextListener](desktopagent.md#contextlistener)
+* [findIntents](desktopagent.md#findintents)
 * [intentListener](desktopagent.md#intentlistener)
 * [open](desktopagent.md#open)
 * [raiseIntent](desktopagent.md#raiseintent)
-* [resolve](desktopagent.md#resolve)
 
 ---
 
@@ -65,6 +65,48 @@ Listens to incoming context broadcast from the Desktop Agent.
 | handler | `function` |
 
 **Returns:** [Listener](listener.md)
+
+___
+<a id="findintents"></a>
+
+###  findIntents
+
+▸ **findIntents**(intent: *`String`*, context?: *[Context](../#context)*): `Promise`<`Array`<[ActionMetadata](actionmetadata.md)>>
+
+*Defined in [interface.ts:120](/src/interface.ts#L120)*
+
+Finds a mapping of Intents and Apps (action metadata) from an intent & context pair
+
+findIntents is effectively granting programmatic access to the Desktop Agent's resolver. Returns a promise that resolves to an Array. The resolved dataset & metadata is Desktop Agent-specific. If intent argument is falsey, then all possible intents - and apps corresponding to the intents - are resolved for the provided context. If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
+
+```javascript
+// find what intents and apps are supported for a given context
+const actionMetadata = await agent.findIntents(null, context);
+// e.g.:
+// [{
+//     intent: { name: "StartCall", displayName: "Call" },
+//     apps: [{ name: "Skype" }]
+// },
+// {
+//     intent: { name: "StartChat", displayName: "Chat" },
+//     apps: [{ name: "Skype" }, { name: "Symphony" }, { name: "Slack" }]
+// }];
+
+// select a particular intent to raise, targeted at a particular app
+const selectedAction = actionMetadata[1];
+const selectedApp = selectedAction.apps[0];
+
+await agent.raiseIntent(selectedAction.intent.name, context, selectedApp.name);
+```
+
+**Parameters:**
+
+| Param | Type |
+| ------ | ------ |
+| intent | `String` |
+| `Optional` context | [Context](../#context) |
+
+**Returns:** `Promise`<`Array`<[ActionMetadata](actionmetadata.md)>>
 
 ___
 <a id="intentlistener"></a>
@@ -130,7 +172,7 @@ Raises an intent to the desktop agent to resolve.
 
 ```javascript
 //raise an intent to start a chat with a given contact
-const intentR = await agent.resolve("StartChat", context);
+const intentR = await agent.findIntents("StartChat", context);
 //use the IntentResolution object to target the same chat app with a new context
 agent.raiseIntent("StartChat", newContext, intentR.source);
 ```
@@ -144,48 +186,6 @@ agent.raiseIntent("StartChat", newContext, intentR.source);
 | `Optional` target | `String` |
 
 **Returns:** `Promise`<[IntentResolution](intentresolution.md)>
-
-___
-<a id="resolve"></a>
-
-###  resolve
-
-▸ **resolve**(intent: *`String`*, context?: *[Context](../#context)*): `Promise`<`Array`<[ActionMetadata](actionmetadata.md)>>
-
-*Defined in [interface.ts:120](/src/interface.ts#L120)*
-
-Resolves an intent & context pair to a mapping of Intents and Apps (action metadata).
-
-Resolve is effectively granting programmatic access to the Desktop Agent's resolver. Returns a promise that resolves to an Array. The resolved dataset & metadata is Desktop Agent-specific. If intent argument is falsey, then all possible intents - and apps corresponding to the intents - are resolved for the provided context. If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
-
-```javascript
-// find what intents and apps are supported for a given context
-const actionMetadata = await agent.resolve(null, context);
-// e.g.:
-// [{
-//     intent: { name: "StartCall", displayName: "Call" },
-//     apps: [{ name: "Skype" }]
-// },
-// {
-//     intent: { name: "StartChat", displayName: "Chat" },
-//     apps: [{ name: "Skype" }, { name: "Symphony" }, { name: "Slack" }]
-// }];
-
-// select a particular intent to raise, targeted at a particular app
-const selectedAction = actionMetadata[1];
-const selectedApp = selectedAction.apps[0];
-
-await agent.raiseIntent(selectedAction.intent.name, context, selectedApp.name);
-```
-
-**Parameters:**
-
-| Param | Type |
-| ------ | ------ |
-| intent | `String` |
-| `Optional` context | [Context](../#context) |
-
-**Returns:** `Promise`<`Array`<[ActionMetadata](actionmetadata.md)>>
 
 ___
 
