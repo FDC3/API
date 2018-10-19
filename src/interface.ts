@@ -15,20 +15,20 @@ enum ResolveError {
 
 type ActionMap = ActionMetadata[]
 
- /**
- * Intent descriptor
- */ 
+/**
+* Intent descriptor
+*/
 interface IntentMetadata {
-  name:String;
-  displayName:String;
+  name: String;
+  displayName: String;
 }
 
- /**
- * Provides a mapping of Apps to Intents
- */ 
+/**
+* Provides a mapping of Apps to Intents
+*/
 interface ActionMetadata {
-  intent:IntentMetadata;
-  apps:AppMetadata[];
+  intent: IntentMetadata;
+  apps: AppMetadata[];
 }
 
 
@@ -51,7 +51,7 @@ interface AppMetadata {
  */
 interface IntentResolution {
   source: String;
-  data?: Object; 
+  data?: Object;
   version: String;
 }
 
@@ -90,16 +90,16 @@ interface DesktopAgent {
   open(name: String, context?: Context): Promise<void>;
 
   /**
-   * Resolves an intent & context pair to a mapping of Intents and Apps (action metadata).
+   * Finds a mapping of Intents and Apps (action metadata) from an intent & context pair 
    *
-   * Resolve is effectively granting programmatic access to the Desktop Agent's resolver. 
+   * findIntents is effectively granting programmatic access to the Desktop Agent's resolver. 
    * Returns a promise that resolves to an Array. The resolved dataset & metadata is Desktop Agent-specific.
    * If intent argument is falsey, then all possible intents - and apps corresponding to the intents - are resolved for the provided context.
    * If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
    * 
    * ```javascript
    * // find what intents and apps are supported for a given context
-   * const actionMetadata = await agent.resolve(null, context);
+   * const actionMetadata = await agent.findIntents(null, context);
    * // e.g.:
    * // [{
    * //     intent: { name: "StartCall", displayName: "Call" },
@@ -117,7 +117,7 @@ interface DesktopAgent {
    * await agent.raiseIntent(selectedAction.intent.name, context, selectedApp.name);
    * ```
    */
-  resolve(intent: String, context?: Context): Promise<Array<ActionMetadata>>;
+  findIntents(intent: String, context?: Context): Promise<Array<ActionMetadata>>;
 
   /**
    * Publishes context to other apps on the desktop.
@@ -131,7 +131,7 @@ interface DesktopAgent {
    * Raises an intent to the desktop agent to resolve.
    * ```javascript
    * //raise an intent to start a chat with a given contact
-   * const intentR = await agent.resolve("StartChat", context);
+   * const intentR = await agent.findIntents("StartChat", context);
    * //use the IntentResolution object to target the same chat app with a new context
    * agent.raiseIntent("StartChat", newContext, intentR.source);
    * ```
