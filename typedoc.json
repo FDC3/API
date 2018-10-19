@@ -1,6 +1,7 @@
 {
     "mode": "file",
-    "out": "docs",
+    "readme" : "none",
+    "out": "docs/ts",
     "theme": "markdown",
     "sourcefile-url-prefix": "/src/"
   }

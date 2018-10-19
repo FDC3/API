@@ -1,3 +1,11 @@
 *.js
 .vscode
 node_modules
+package-lock.json
+docs/ts
+.bundle/
+docs/.sass-cache/
+docs/_site/
+.DS_Store
+docs/.jekyll-metadata
+yarn.lock

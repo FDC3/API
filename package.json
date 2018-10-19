@@ -1,17 +1,40 @@
 {
-  "name": "fdc3-api",
-  "version": "1.0.0",
+  "name": "@finos/fdc3-api",
   "main": "index.js",
   "repository": "https://github.com/FDC3/API.git",
   "license": "Apache-2.0",
   "scripts": {
     "test": "tsc",
-    "doc": "typedoc --options typedoc.json"
+    "doc": "typedoc --options typedoc.json",
+    "semantic-release": "semantic-release"
   },
   "devDependencies": {
     "typedoc": "^0.12.0",
     "typedoc-plugin-markdown": "^1.1.15",
     "typedoc-plugin-sourcefile-url": "^1.0.3",
-    "typescript": "^2.8.4"
+    "typescript": "^2.8.4",
+    "semantic-release": "^15.10.3",
+    "@semantic-release/changelog": "^3.0.1",
+    "@semantic-release/git": "^7.0.5"
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/git",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "docs/CHANGELOG.md"
+        }
+      ],
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
+      "@semantic-release/github"
+    ]
   }
 }

@@ -1,0 +1,15 @@
+theme: jekyll-theme-slate
+
+title: FDC3 API specifications
+
+version: '[[tag]]'
+
+description: The documentation website for the FINOS FDC3 API specifications
+
+google_analytics: UU-123456
+
+show_downloads: false
+
+github:
+  is_project_page: true
+  repository_url: https://github.com/fdc3/api

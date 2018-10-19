@@ -1,0 +1,48 @@
+language: node_js
+node_js:
+  - 8
+
+env:
+  global:
+    # travis encrypt GITHUB_TOKEN=....
+    # travis encrypt GITHUB_USERNAME=....
+    # travis encrypt GITHUB_PASSWORD=....
+    # travis encrypt GH_TOKEN=....
+    # travis encrypt NPM_TOKEN=...
+    # - secure: ""
+
+script:
+  - npm install -g yarn
+  - yarn install
+  - yarn test
+  - yarn run doc
+
+deploy:
+  # TODO - enable it when ready to release
+  # - provider: script
+  #   skip_cleanup: true
+  #   script: npm run semantic-release
+  #   on:
+  #     branch: master
+  - provider: script
+    skip_cleanup: true
+    script: ./prepare-docs-release.sh
+    on:
+      branch: master
+  - provider: pages
+    skip-cleanup: true
+    github-token: $GITHUB_TOKEN
+    email: $GITHUB_EMAIL
+    name: $GITHUB_USERNAME
+    verbose: true
+    keep-history: true
+    local-dir: docs
+    target_branch: gh-pages
+    on:
+      branch: master
+
+# TODO - enable it when ready to release
+# notifications:
+#   email:
+#     - fdc3-api@finos.org
+#     - announce@finos.org
