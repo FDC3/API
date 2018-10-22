@@ -12,7 +12,9 @@ The FDC3 API is released under the [FINOS NPMJS Organisation](npmjs.com/org/fino
 On every commit, [semantic release](https://semantic-release.gitbook.io/semantic-release/) will be executed by Travis CI and - based on the commit message - will decide to trigger a release or not.
 
 Release managers can use [commitizen](http://commitizen.github.io/cz-cli/) to simplify their commit process; simply install `npm install -g commitizen` and use `git cz` (instead of `git commit`) to commit your changes.
-![Commitizen](https://github.com/commitizen/cz-cli/raw/master/meta/screenshots/add-commit.png)
+![Commitizen](https://github.com/commitizen/cz-cli/raw/master/meta/screenshots/add-commit.png).
+
+It is worth noting that if release managers have the opportunity [squash and merge](https://help.github.com/articles/about-pull-request-merges/#squash-and-merge-your-pull-request-commits) using GitHub merge UI, in order to choose the right commit messages and keep commit log clean.
 
 When a release is performed, Travis CI will do the following:
 - Run all build and validation tasks defined by [`.travis.yml`](.travis.yml)
