@@ -16,21 +16,27 @@
       <div class="row">
         <div class="col-3 left-column">
           <div class="column-menu">
-            <p class="column-title"><a href="finos.org/fdc3" target="_blank"><img src="https://www.finos.org/hs-fs/hubfs/FINOS/website/pages/programs/fdc3-logo.png" alt="FDC3 logo"/></a></p>
+            <p class="column-title"><a href="{{ site.program_name }}" target="_blank"><img src="{{ site.program_image_url }} " alt="{{ site.program_name }} logo"/></a></p>
             <div class="column-icons">
-              <a href="https://github.com/fdc3/api" target="_blank">
-              <img src="https://www.finos.org/hs-fs/hubfs/FINOS/website/logos/social-logos/github-logo-black.png?t=1539813516681&amp;width=48&amp;height=48&amp;name=github-logo.png"/></a>
-              <a href="https://finosfoundation.atlassian.net/wiki/spaces/FDC3/pages/92963924/API+Working+Group" target="_blank">
-              <img width="25" height="25" style="border:none" src="https://www.finos.org/hs-fs/hubfs/sofin%20assets/External%20logos/atlassian-logo.png?width=48&amp;height=48&amp;name=atlassian-logo.png"></a>
-              <a href="https://twitter.com/hashtag/fdc3" target="_blank">
-              <img src="https://www.finos.org/hs-fs/hubfs/sofin%20assets/External%20logos/twitter-logo.png?width=48&amp;height=48&amp;name=twitter-logo.png"></a>
+              {% for social_icon in site.social_icons %}
+                <a href="{{ social_icon.link_url }}" target="_blank">
+                  <img src="{{ social_icon.image_url }}"/></a>
+              {% endfor %}
             </div>
             <ul class="column-menu">
-              <li><a href="/">Getting Started</a></li>
-              <li><a href="/ts">API specs</a></li>
-              <li><a href="/CHANGELOG.html">What's new in {{ site.version }}</a></li>
-              <li><a href="https://finosfoundation.atlassian.net/wiki/spaces/FDC3/pages/92963924/API+Working+Group" target="_blank">FDC3 API Working Group</a>
-              <li><a href="https://finos.org/fdc3" target="_blank">FINOS FDC3 Program</a></li>
+                <li>
+                  <a href="/CHANGELOG.html" target="{{ link.target }}">
+                    What's new in {{ site.version }}
+                  </a>
+                </li>
+                {% for link in site.links %}
+                  <li>
+                    <a href="{{ link.url }}" target="{{ link.target }}">
+                      {{ link.name }}
+                    </a>
+                  </li>
+                {% endfor %}
+                </ul>
             </ul>
           </div>
           <div class="column-footer">
