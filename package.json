@@ -1,7 +1,7 @@
 {
   "name": "@types/fdc3-api",
   "main": "index.js",
-  "repository": "https://github.com/FDC3/API.git",
+  "repository": "https://github.com/maoo/API.git",
   "license": "Apache-2.0",
   "scripts": {
     "test": "tsc",
