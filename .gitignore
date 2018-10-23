@@ -3,6 +3,8 @@
 node_modules
 package-lock.json
 docs/ts
+docs/_layouts
+docs/assets
 .bundle/
 docs/.sass-cache/
 docs/_site/

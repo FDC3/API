@@ -26,7 +26,8 @@ deploy:
   #     branch: master
   - provider: script
     skip_cleanup: true
-    script: ./prepare-docs-release.sh
+    # TODO - replace maoo/fdc3-pages-layout with FDC3/FDC3, as soon as code is contributed
+    script: curl https://raw.githubusercontent.com/maoo/fdc3-pages-layout/master/prepare-docs-release.sh | bash
     on:
       branch: master
   - provider: pages
