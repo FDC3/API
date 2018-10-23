@@ -1,12 +1,6 @@
-theme: jekyll-theme-slate
-
 title: FDC3 API specifications
 
 description: The documentation website for the FINOS FDC3 API specifications
-
-program_name: FDC3
-program_link_url: finos.org/fdc3
-program_image_url: https://www.finos.org/hs-fs/hubfs/FINOS/website/pages/programs/fdc3-logo.png
 
 google_analytics: UU-123456
 
