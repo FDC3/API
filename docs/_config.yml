@@ -18,6 +18,9 @@ github:
 
 version: '[[tag]]'
 
+collections:
+- tags
+
 links:
   - name: Getting Started
     url: /

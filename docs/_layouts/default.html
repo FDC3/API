@@ -42,6 +42,18 @@
           <div class="column-footer">
             <a href="finos.org" target="_blank"><img src="https://www.finos.org/hs-fs/hubfs/sofin%20assets/SOFIN%20LOGOS/FINOS_Icon_Wordmark_White.png" alt="FINOS logo"/></a>
             <p>Release: {{ site.version }}</p>
+            <a class="btn btn-primary" data-toggle="collapse" href="#collapseOldReleases" role="button" aria-expanded="false" aria-controls="collapseExample">
+              previous releases
+            </a>
+            <div class="collapse" id="collapseOldReleases">
+              <ul class="old-releases">
+                {% for page in site.pages %}
+                    {% if page.flag == 'tags' %}
+                      <li><a href="/tags/{{ page.name | remove: '.md'  }}">{{ page.name | remove: '.md' }}</a></li>
+                    {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
           </div>
         </div>
         <div class="col-9 main_content">

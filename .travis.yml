@@ -36,7 +36,7 @@ deploy:
     name: $GITHUB_USERNAME
     verbose: true
     keep-history: true
-    local-dir: docs
+    local-dir: gh-pages-docs
     target_branch: gh-pages
     on:
       branch: master

@@ -9,3 +9,4 @@ docs/_site/
 .DS_Store
 docs/.jekyll-metadata
 yarn.lock
+gh-pages-docs/
