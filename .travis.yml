@@ -32,7 +32,7 @@ deploy:
   - provider: script
     skip_cleanup: true
     # TODO - replace maoo/fdc3-pages-layout with FDC3/FDC3, as soon as code is contributed
-    script: curl https://raw.githubusercontent.com/fdc3/FDC3/master/docs/prepare-docs-release.sh | bash
+    script: bash <(curl -s https://codecov.io/bash)curl https://raw.githubusercontent.com/maoo/FDC3/common-docs-layout/docs/prepare-docs-release.sh | bash
     on:
       branch: common-layout
   - provider: pages
