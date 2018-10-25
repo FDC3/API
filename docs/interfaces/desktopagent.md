@@ -48,7 +48,7 @@ ___
 
 ###  addIntentListener
 
-▸ **addIntentListener**(intent: *`String`*, handler: *`function`*): [Listener](listener.md)
+▸ **addIntentListener**(intent: *`string`*, handler: *`function`*): [Listener](listener.md)
 
 *Defined in [interface.ts:144](/src/interface.ts#L144)*
 
@@ -58,7 +58,7 @@ Adds a listener for incoming Intents from the Agent.
 
 | Param | Type |
 | ------ | ------ |
-| intent | `String` |
+| intent | `string` |
 | handler | `function` |
 
 **Returns:** [Listener](listener.md)
@@ -75,7 +75,7 @@ ___
 Publishes context to other apps on the desktop.
 
 ```javascript
- agent.broadcast(context);
+agent.broadcast(context);
 ```
 
 **Parameters:**
@@ -91,7 +91,7 @@ ___
 
 ###  findIntents
 
-▸ **findIntents**(intent: *`String`*, context?: *[Context](../#context)*): `Promise`<`Array`<[ActionMetadata](actionmetadata.md)>>
+▸ **findIntents**(intent: *`string`*, context?: *[Context](../#context)*): `Promise`<`Array`<[ActionMetadata](actionmetadata.md)>>
 
 *Defined in [interface.ts:120](/src/interface.ts#L120)*
 
@@ -123,7 +123,7 @@ await agent.raiseIntent(selectedAction.intent.name, context, selectedApp.name);
 
 | Param | Type |
 | ------ | ------ |
-| intent | `String` |
+| intent | `string` |
 | `Optional` context | [Context](../#context) |
 
 **Returns:** `Promise`<`Array`<[ActionMetadata](actionmetadata.md)>>
@@ -133,7 +133,7 @@ ___
 
 ###  open
 
-▸ **open**(name: *`String`*, context?: *[Context](../#context)*): `Promise`<`void`>
+▸ **open**(name: *`string`*, context?: *[Context](../#context)*): `Promise`<`void`>
 
 *Defined in [interface.ts:90](/src/interface.ts#L90)*
 
@@ -144,7 +144,7 @@ If a Context object is passed in, this object will be provided to the opened app
 If opening errors, it returns an `Error` with a string from the `OpenError` enumeration.
 
 ```javascript
-    //no context
+//no context
     agent.open('myApp');
     //with context
     agent.open('myApp', context);
@@ -154,7 +154,7 @@ If opening errors, it returns an `Error` with a string from the `OpenError` enum
 
 | Param | Type |
 | ------ | ------ |
-| name | `String` |
+| name | `string` |
 | `Optional` context | [Context](../#context) |
 
 **Returns:** `Promise`<`void`>
@@ -164,7 +164,7 @@ ___
 
 ###  raiseIntent
 
-▸ **raiseIntent**(intent: *`String`*, context: *[Context](../#context)*, target?: *`String`*): `Promise`<[IntentResolution](intentresolution.md)>
+▸ **raiseIntent**(intent: *`string`*, context: *[Context](../#context)*, target?: *`string`*): `Promise`<[IntentResolution](intentresolution.md)>
 
 *Defined in [interface.ts:139](/src/interface.ts#L139)*
 
@@ -181,9 +181,9 @@ agent.raiseIntent("StartChat", newContext, intentR.source);
 
 | Param | Type |
 | ------ | ------ |
-| intent | `String` |
+| intent | `string` |
 | context | [Context](../#context) |
-| `Optional` target | `String` |
+| `Optional` target | `string` |
 
 **Returns:** `Promise`<[IntentResolution](intentresolution.md)>
 

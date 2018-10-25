@@ -22,7 +22,7 @@ App metadata is Desktop Agent specific - but should support a name property.
 
 ###  name
 
-**● name**: *`String`*
+**● name**: *`string`*
 
 *Defined in [interface.ts:39](/src/interface.ts#L39)*
 
