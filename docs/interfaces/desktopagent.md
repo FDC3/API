@@ -75,7 +75,7 @@ ___
 Publishes context to other apps on the desktop.
 
 ```javascript
- agent.broadcast(context);
+agent.broadcast(context);
 ```
 
 **Parameters:**
@@ -97,7 +97,7 @@ ___
 
 Finds a mapping of Intents and Apps (action metadata) from an intent & context pair
 
-findIntents is effectively granting programmatic access to the Desktop Agent's resolver. Returns a promise that resolves to an Array. The resolved dataset & metadata is Desktop Agent-specific. If intent argument is falsey, then all possible intents - and apps corresponding to the intents - are resolved for the provided context. If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
+findIntents is effectively granting programmatic access to the Desktop Agent's resolver. Returns a promise that resolves to an Array. The resolved dataset & metadata is Desktop Agent-specific. If intent argument is falsy, then all possible intents - and apps corresponding to the intents - are resolved for the provided context. If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
 
 ```javascript
 // find what intents and apps are supported for a given context
@@ -144,10 +144,10 @@ If a Context object is passed in, this object will be provided to the opened app
 If opening errors, it returns an `Error` with a string from the `OpenError` enumeration.
 
 ```javascript
-    //no context
-    agent.open('myApp');
-    //with context
-    agent.open('myApp', context);
+// no context
+   agent.open('myApp');
+// with context
+   agent.open('myApp', context);
 ```
 
 **Parameters:**
@@ -171,10 +171,10 @@ ___
 Raises an intent to the desktop agent to resolve.
 
 ```javascript
-//raise an intent to start a chat with a given contact
-const intentR = await agent.findIntents("StartChat", context);
-//use the IntentResolution object to target the same chat app with a new context
-agent.raiseIntent("StartChat", newContext, intentR.source);
+// raise an intent to start a chat with a given contact
+const intentResolution = await agent.findIntents("StartChat", context);
+// use the IntentResolution object to target the same chat app with a new context
+agent.raiseIntent("StartChat", newContext, intentResolution.source);
 ```
 
 **Parameters:**

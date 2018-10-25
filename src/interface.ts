@@ -42,11 +42,11 @@ interface AppMetadata {
 /**
  * IntentResolution provides a standard format for data returned upon resolving an intent.
  * ```javascript
- * //resolve a "Chain" type intent
- * var intentR = await agent.raiseIntent("intentName", context);
- * //resolve a "Client-Service" type intent with data response
- * var intentR = await agent.raiseIntent("intentName", context);
- * var dataR = intentR.data;
+ * // resolve a "Chain" type intent
+ * var intentResolution = await agent.raiseIntent("intentName", context);
+ * // resolve a "Client-Service" type intent with data response
+ * var intentResolution = await agent.raiseIntent("intentName", context);
+ * var data = intentResolution.data;
  * ```
  */
 interface IntentResolution {
@@ -81,10 +81,10 @@ interface DesktopAgent {
    * If opening errors, it returns an `Error` with a string from the `OpenError` enumeration.
    * 
    *  ```javascript
-   *     //no context
-   *     agent.open('myApp');
-   *     //with context
-   *     agent.open('myApp', context);
+   * // no context
+   *    agent.open('myApp');
+   * // with context
+   *    agent.open('myApp', context);
    * ```
    */
   open(name: String, context?: Context): Promise<void>;
@@ -94,7 +94,7 @@ interface DesktopAgent {
    *
    * findIntents is effectively granting programmatic access to the Desktop Agent's resolver. 
    * Returns a promise that resolves to an Array. The resolved dataset & metadata is Desktop Agent-specific.
-   * If intent argument is falsey, then all possible intents - and apps corresponding to the intents - are resolved for the provided context.
+   * If intent argument is falsy, then all possible intents - and apps corresponding to the intents - are resolved for the provided context.
    * If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
    * 
    * ```javascript
@@ -130,10 +130,10 @@ interface DesktopAgent {
   /**
    * Raises an intent to the desktop agent to resolve.
    * ```javascript
-   * //raise an intent to start a chat with a given contact
-   * const intentR = await agent.findIntents("StartChat", context);
-   * //use the IntentResolution object to target the same chat app with a new context
-   * agent.raiseIntent("StartChat", newContext, intentR.source);
+   * // raise an intent to start a chat with a given contact
+   * const intentResolution = await agent.findIntents("StartChat", context);
+   * // use the IntentResolution object to target the same chat app with a new context
+   * agent.raiseIntent("StartChat", newContext, intentResolution.source);
    * ```
    */
   raiseIntent(intent: String, context: Context, target?: String): Promise<IntentResolution>;

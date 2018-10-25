@@ -5,11 +5,11 @@
 IntentResolution provides a standard format for data returned upon resolving an intent.
 
 ```javascript
-//resolve a "Chain" type intent
-var intentR = await agent.raiseIntent("intentName", context);
-//resolve a "Client-Service" type intent with data response
-var intentR = await agent.raiseIntent("intentName", context);
-var dataR = intentR.data;
+// resolve a "Chain" type intent
+var intentResolution = await agent.raiseIntent("intentName", context);
+// resolve a "Client-Service" type intent with data response
+var intentResolution = await agent.raiseIntent("intentName", context);
+var data = intentResolution.data;
 ```
 
 ## Hierarchy
