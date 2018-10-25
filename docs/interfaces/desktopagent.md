@@ -48,7 +48,7 @@ ___
 
 ###  addIntentListener
 
-▸ **addIntentListener**(intent: *`String`*, handler: *`function`*): [Listener](listener.md)
+▸ **addIntentListener**(intent: *`string`*, handler: *`function`*): [Listener](listener.md)
 
 *Defined in [interface.ts:144](/src/interface.ts#L144)*
 
@@ -58,7 +58,7 @@ Adds a listener for incoming Intents from the Agent.
 
 | Param | Type |
 | ------ | ------ |
-| intent | `String` |
+| intent | `string` |
 | handler | `function` |
 
 **Returns:** [Listener](listener.md)
@@ -75,7 +75,7 @@ ___
 Publishes context to other apps on the desktop.
 
 ```javascript
- agent.broadcast(context);
+agent.broadcast(context);
 ```
 
 **Parameters:**
@@ -91,13 +91,13 @@ ___
 
 ###  findIntents
 
-▸ **findIntents**(intent: *`String`*, context?: *[Context](../#context)*): `Promise`<`Array`<[ActionMetadata](actionmetadata.md)>>
+▸ **findIntents**(intent: * `string` &#124; `undefined`*, context?: *[Context](../#context)*): `Promise`<[ActionMetadata](actionmetadata.md)[]>
 
 *Defined in [interface.ts:120](/src/interface.ts#L120)*
 
 Finds a mapping of Intents and Apps (action metadata) from an intent & context pair
 
-findIntents is effectively granting programmatic access to the Desktop Agent's resolver. Returns a promise that resolves to an Array. The resolved dataset & metadata is Desktop Agent-specific. If intent argument is falsey, then all possible intents - and apps corresponding to the intents - are resolved for the provided context. If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
+findIntents is effectively granting programmatic access to the Desktop Agent's resolver. Returns a promise that resolves to an Array. The resolved dataset & metadata is Desktop Agent-specific. If the intent argument is undefined, then all possible intents - and apps corresponding to the intents - are resolved for the provided context. If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
 
 ```javascript
 // find what intents and apps are supported for a given context
@@ -123,17 +123,17 @@ await agent.raiseIntent(selectedAction.intent.name, context, selectedApp.name);
 
 | Param | Type |
 | ------ | ------ |
-| intent | `String` |
+| intent |  `string` &#124; `undefined`|
 | `Optional` context | [Context](../#context) |
 
-**Returns:** `Promise`<`Array`<[ActionMetadata](actionmetadata.md)>>
+**Returns:** `Promise`<[ActionMetadata](actionmetadata.md)[]>
 
 ___
 <a id="open"></a>
 
 ###  open
 
-▸ **open**(name: *`String`*, context?: *[Context](../#context)*): `Promise`<`void`>
+▸ **open**(name: *`string`*, context?: *[Context](../#context)*): `Promise`<`void`>
 
 *Defined in [interface.ts:90](/src/interface.ts#L90)*
 
@@ -144,7 +144,7 @@ If a Context object is passed in, this object will be provided to the opened app
 If opening errors, it returns an `Error` with a string from the `OpenError` enumeration.
 
 ```javascript
-    //no context
+//no context
     agent.open('myApp');
     //with context
     agent.open('myApp', context);
@@ -154,7 +154,7 @@ If opening errors, it returns an `Error` with a string from the `OpenError` enum
 
 | Param | Type |
 | ------ | ------ |
-| name | `String` |
+| name | `string` |
 | `Optional` context | [Context](../#context) |
 
 **Returns:** `Promise`<`void`>
@@ -164,7 +164,7 @@ ___
 
 ###  raiseIntent
 
-▸ **raiseIntent**(intent: *`String`*, context: *[Context](../#context)*, target?: *`String`*): `Promise`<[IntentResolution](intentresolution.md)>
+▸ **raiseIntent**(intent: *`string`*, context: *[Context](../#context)*, target?: *`string`*): `Promise`<[IntentResolution](intentresolution.md)>
 
 *Defined in [interface.ts:139](/src/interface.ts#L139)*
 
@@ -181,9 +181,9 @@ agent.raiseIntent("StartChat", newContext, intentR.source);
 
 | Param | Type |
 | ------ | ------ |
-| intent | `String` |
+| intent | `string` |
 | context | [Context](../#context) |
-| `Optional` target | `String` |
+| `Optional` target | `string` |
 
 **Returns:** `Promise`<[IntentResolution](intentresolution.md)>
 

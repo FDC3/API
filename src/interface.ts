@@ -1,4 +1,4 @@
-type Context = Object;
+type Context = object;
 
 enum OpenError {
   AppNotFound = "AppNotFound",
@@ -19,8 +19,8 @@ type ActionMap = ActionMetadata[]
 * Intent descriptor
 */
 interface IntentMetadata {
-  name: String;
-  displayName: String;
+  name: string;
+  displayName: string;
 }
 
 /**
@@ -36,7 +36,7 @@ interface ActionMetadata {
  * App metadata is Desktop Agent specific - but should support a name property.
  */
 interface AppMetadata {
-  name: String;
+  name: string;
 }
 
 /**
@@ -50,9 +50,9 @@ interface AppMetadata {
  * ```
  */
 interface IntentResolution {
-  source: String;
-  data?: Object;
-  version: String;
+  source: string;
+  data?: object;
+  version: string;
 }
 
 interface Listener {
@@ -87,14 +87,14 @@ interface DesktopAgent {
    *     agent.open('myApp', context);
    * ```
    */
-  open(name: String, context?: Context): Promise<void>;
+  open(name: string, context?: Context): Promise<void>;
 
   /**
    * Finds a mapping of Intents and Apps (action metadata) from an intent & context pair 
    *
    * findIntents is effectively granting programmatic access to the Desktop Agent's resolver. 
    * Returns a promise that resolves to an Array. The resolved dataset & metadata is Desktop Agent-specific.
-   * If intent argument is falsey, then all possible intents - and apps corresponding to the intents - are resolved for the provided context.
+   * If the intent argument is undefined, then all possible intents - and apps corresponding to the intents - are resolved for the provided context.
    * If the resolution errors, it returns an `Error` with a string from the `ResolveError` enumeration.
    * 
    * ```javascript
@@ -117,7 +117,7 @@ interface DesktopAgent {
    * await agent.raiseIntent(selectedAction.intent.name, context, selectedApp.name);
    * ```
    */
-  findIntents(intent: String, context?: Context): Promise<Array<ActionMetadata>>;
+  findIntents(intent: string | undefined, context?: Context): Promise<ActionMetadata[]>;
 
   /**
    * Publishes context to other apps on the desktop.
@@ -136,12 +136,12 @@ interface DesktopAgent {
    * agent.raiseIntent("StartChat", newContext, intentR.source);
    * ```
    */
-  raiseIntent(intent: String, context: Context, target?: String): Promise<IntentResolution>;
+  raiseIntent(intent: string, context: Context, target?: string): Promise<IntentResolution>;
 
   /**
    * Adds a listener for incoming Intents from the Agent.
    */
-  addIntentListener(intent: String, handler: (context: Context) => void): Listener;
+  addIntentListener(intent: string, handler: (context: Context) => void): Listener;
 
   /**
    * Adds a listener for incoming context broadcast from the Desktop Agent.

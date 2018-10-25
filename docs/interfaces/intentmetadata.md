@@ -23,7 +23,7 @@ Intent descriptor
 
 ###  displayName
 
-**● displayName**: *`String`*
+**● displayName**: *`string`*
 
 *Defined in [interface.ts:23](/src/interface.ts#L23)*
 
@@ -32,7 +32,7 @@ ___
 
 ###  name
 
-**● name**: *`String`*
+**● name**: *`string`*
 
 *Defined in [interface.ts:22](/src/interface.ts#L22)*
 
