@@ -139,12 +139,12 @@ interface DesktopAgent {
   raiseIntent(intent: String, context: Context, target?: String): Promise<IntentResolution>;
 
   /**
-   * Listens to incoming Intents from the Agent.
+   * Adds a listener for incoming Intents from the Agent.
    */
-  intentListener(intent: String, handler: (context: Context) => void): Listener;
+  addIntentListener(intent: String, handler: (context: Context) => void): Listener;
 
   /**
-   * Listens to incoming context broadcast from the Desktop Agent.
+   * Adds a listener for incoming context broadcast from the Desktop Agent.
    */
-  contextListener(handler: (context: Context) => void): Listener;
+  addContextListener(handler: (context: Context) => void): Listener;
 }

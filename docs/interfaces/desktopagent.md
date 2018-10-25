@@ -14,10 +14,10 @@ A Desktop Agent can be connected to one or more App Directories and will use dir
 
 ### Methods
 
+* [addContextListener](desktopagent.md#addcontextlistener)
+* [addIntentListener](desktopagent.md#addintentlistener)
 * [broadcast](desktopagent.md#broadcast)
-* [contextListener](desktopagent.md#contextlistener)
 * [findIntents](desktopagent.md#findintents)
-* [intentListener](desktopagent.md#intentlistener)
 * [open](desktopagent.md#open)
 * [raiseIntent](desktopagent.md#raiseintent)
 
@@ -25,6 +25,45 @@ A Desktop Agent can be connected to one or more App Directories and will use dir
 
 ## Methods
 
+<a id="addcontextlistener"></a>
+
+###  addContextListener
+
+▸ **addContextListener**(handler: *`function`*): [Listener](listener.md)
+
+*Defined in [interface.ts:149](/src/interface.ts#L149)*
+
+Adds a listener for incoming context broadcast from the Desktop Agent.
+
+**Parameters:**
+
+| Param | Type |
+| ------ | ------ |
+| handler | `function` |
+
+**Returns:** [Listener](listener.md)
+
+___
+<a id="addintentlistener"></a>
+
+###  addIntentListener
+
+▸ **addIntentListener**(intent: *`String`*, handler: *`function`*): [Listener](listener.md)
+
+*Defined in [interface.ts:144](/src/interface.ts#L144)*
+
+Adds a listener for incoming Intents from the Agent.
+
+**Parameters:**
+
+| Param | Type |
+| ------ | ------ |
+| intent | `String` |
+| handler | `function` |
+
+**Returns:** [Listener](listener.md)
+
+___
 <a id="broadcast"></a>
 
 ###  broadcast
@@ -36,7 +75,7 @@ A Desktop Agent can be connected to one or more App Directories and will use dir
 Publishes context to other apps on the desktop.
 
 ```javascript
-agent.broadcast(context);
+ agent.broadcast(context);
 ```
 
 **Parameters:**
@@ -46,25 +85,6 @@ agent.broadcast(context);
 | context | [Context](../#context) |
 
 **Returns:** `void`
-
-___
-<a id="contextlistener"></a>
-
-###  contextListener
-
-▸ **contextListener**(handler: *`function`*): [Listener](listener.md)
-
-*Defined in [interface.ts:149](/src/interface.ts#L149)*
-
-Listens to incoming context broadcast from the Desktop Agent.
-
-**Parameters:**
-
-| Param | Type |
-| ------ | ------ |
-| handler | `function` |
-
-**Returns:** [Listener](listener.md)
 
 ___
 <a id="findintents"></a>
@@ -109,26 +129,6 @@ await agent.raiseIntent(selectedAction.intent.name, context, selectedApp.name);
 **Returns:** `Promise`<`Array`<[ActionMetadata](actionmetadata.md)>>
 
 ___
-<a id="intentlistener"></a>
-
-###  intentListener
-
-▸ **intentListener**(intent: *`String`*, handler: *`function`*): [Listener](listener.md)
-
-*Defined in [interface.ts:144](/src/interface.ts#L144)*
-
-Listens to incoming Intents from the Agent.
-
-**Parameters:**
-
-| Param | Type |
-| ------ | ------ |
-| intent | `String` |
-| handler | `function` |
-
-**Returns:** [Listener](listener.md)
-
-___
 <a id="open"></a>
 
 ###  open
@@ -144,7 +144,7 @@ If a Context object is passed in, this object will be provided to the opened app
 If opening errors, it returns an `Error` with a string from the `OpenError` enumeration.
 
 ```javascript
-//no context
+    //no context
     agent.open('myApp');
     //with context
     agent.open('myApp', context);
