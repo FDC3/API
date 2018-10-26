@@ -1,0 +1,55 @@
+language: node_js
+node_js:
+  - 8
+
+env:
+  global:
+    # travis encrypt GITHUB_TOKEN=....
+    # travis encrypt GITHUB_USERNAME=....
+    # travis encrypt GITHUB_PASSWORD=....
+    # travis encrypt GH_TOKEN=....
+    # travis encrypt NPM_TOKEN=...
+    # - secure: ""
+    - secure: "HhiaLApIqssh53fOEpBfGmnfUKWEM5Fy714PwHElawH+XpVEG34ouvkCoTLWcZ1J/wGSI1wopHiK26LrhJzdlurw1CmhiN+iceyX3Zd6K4Q0S0tJja7UgACYQis/T/Eot5nS+VGsEW/eZVaLiEfj5mkPwGIdNfVDZdbWysXjf9XqPLbRje7Su3gQEyrdUkExAzw42DH/+XvlXdzpB2Fbh/oRaHZZl0/BUXxMbMHmSVx6k6kzGRK10JSjkcTgEz10fnUK9/9h40VQIWJLJb0RM0/Ujxh1/eZB2pqNc9y9cRNiYARpN9xukn8JNxokAOYytAmKfouEXDHrDeNlKSYwFG+bkzaw+E796WCizCpIC6FydHZpEbTIBNySrs3ET9a0tQcY8WfW4wjzufZwMk9hkpDDb1B0Q1nq1akntIkR86Hfv5Yr5feofyDx3i/vZH2qPsvKQK7uls+eRMOqM0XtQYhCvOoPVl6eYynqLU6gsARCTESxwqSp/gAAq0/73ajq4xqGCSFWaZyh2/+F7eXdQuzDf8mG6F6bLftTmlwKEf9VYE5+XMNk1t2QbCa1WnLlYPRgJ722Nx7SeqTK3kh5PlQNeGRwYwaxBgXkfEi4H+S5EBtwrp+W4mROMCh8mjevLy528Fm0wYN2ee01vdgEDBO76KYS+61e4vttpA6McDM="
+    - secure: "EixhTy5mAtSm4nLMW1/YWUabQJZ770ndVF3o8mAynkYxpWyqF+pDAfC4rIXjKA88tgQcIjadn18G8yIEtaKCDbbFAtZEwTgdHuzig2t0Wg2NUiO4DAgV2NnBLUHLg5kpBxWyn5GK7jJ+/Q9zNErf6H7DmlX3SMMeFgv61JgFr0QIY/xn/3AZZuSAmnhkkCAv8IPUvZQyQ9SJI3Om+x1XxOspCIt7eFgFexqwWDrCwx+gM/xhdDas1KvgDIMADbwY6YFj+krfk93QitmcfHnGPKaZxrwWrlnfS+3JdQwYxivtIfumLGk2meDCSU47uzfwm3Bzm9Hi9ep7KYQS5XamZxWP4qdjAijr+V/qnG9bNfueoYuhFcSpUNzb5woQsb7wfWKtZ/GGd+eCxwcgR7kSyVnM68mEOnCNWoPRjWJrQGA3CRL1A6dEOCS6gGb3EGYRfVchQq56AHlPyD41l2CP2ZE5siqPRSseupVou/NBtsKE25Rfvfhv19cAb4jxfrstzjwkG9K+rGpjNVBd9FPRhaoC0G8Tx3O9o6ojPYrKSrx33z9kZlN7nBOVQF1X7m5yOTqUYNXZvMAqjnQSCuBbbFRj99j0DS80GNXD2X0cjIER8KUjhL4s4MwvjJoo1xJZew+wAg7rDPQKDsYHTzmAkgQp2ziGuqhDTkWw99Illr4="
+    - secure: "LMaCu1hr+f1cR0YfHnlI5qg/Hi3wLSUehgd03BAvxhqd2xOGxwQQ3sLp5FFAtgATSrvh3atOjfuaTVLY54XDDqHVbEn3O+obuvSwPiKc5QExMj0kctjo8rPKxnQX77raRnnwjT90N3tKAN0N7w0KbgjaHOyzU+xSvnjbzNMzJfmSzSga12rAOymtpz/cQP/MgRrGtx4/vy/rpIKcSMCADWtQTU6jaebiYMsXgoeuq9p7Xu9hYVEt5cRIC+NzSpntgCOkUNIqsHCIkuMQdimzSb0Gqx+YuDH+2o5fDzvhrlsEIE9bVXW9q6iZWCXH0P+gRADSrDhqvmRqjYOMgM/dLwhbLQSOzW/OWl1fIG+XJyxTC7VGZU1lWAhS7WiSLSIB4E0rKjZIxTQU0wOkSSX0qqPGQs7ZheMXY5V8+eRhao8yJmjTi/HhJV+Z3Z+jmfqh0HDucc5Mky41eaptUQA/ehx50ZroKZGrbva6su1XbGX6w6JUTj4oc/B4YQnyOtMBQY/G/BjfonL84p2lZormW+2lXqYoHkIfPHumFsTgQleMuHMyB6NOdssZgTSjdiezSrO1Un+gH+JjidkF20fwwRISmA6Y9DpvxnCZoUye5DUhKjbYK83VHOHJW88YyzhUNrYoVqIlyCWQF7YauI4vC4+CBIwWfraU4LyPaBWog4M="
+    - secure: "TJqPjiWt5bt+ZKXaVsoaiAFuCTl9NOamMzrYYB+kq/EwhMDuEtgpo5plZ6c80ItRuToysc5QZW0VpXoxIOSNFCerPoHs8CL4B1e6Occ0sCt+GysEUWUFVzUOYqK6rqfruB9bECzC4Izayyw2mbJbO8ye7OcvXj1BhlWiCNpsBM4dKAkm08yVnBUNygaGHttAcTQTyReCe3HNXCAAf0B/Dbv4/yyuHbJkqOTo7fLxb3wi8ysu6AnubsN/9wTN/2Ana70GooCwrKob1FEV8L3tIn1BjTX721tDFY2bgr5lLWCR9aVZ8QhxW2WDm6IlHqZhg19LLMfaGmbBvAGk5J3CeFTXN2WVhKIQrskNjKuYpkeeEz4xaOio2HDPucG+8d7R2MtyGZm6cJr5QDLHSB/BzE4PdxbZ5rIZchKFVpUMXMqMowrpFMHN+kphIBMNIW2XvhhLbg2XGoPiTgeoH0NJg8iW6ktG2TVGIrHc9AS7RwkwvlbCukZJ8QWJIJfLIj1+5z01DJ6Afai+laIs1I/IqeKcldmqIrXNSnitqWjSlMt+7kjTMOHFrPUI/Nlddx1jEOixP1bn8MIaygHeIMVsp6uXE84kkVbrsFvDv+y/QhTk/dGENUA2r0SsNn9vnn51Y2DFRB8nId764QOmNzPrmMEki98VG4n+ve6PFkqqe6c="
+    - secure: "EMt1U7LPHFJW2268Z6p5eERTijViWV0Cp8ksFXhWzoEG4dy3nx4nP9u6CHySzujASIPCTlvqYoAVl/4eX0OtcCzrJ0pZPlXxF28SatdYiVCpw0brtECbM4dnn4NO0YhILfFiKBpc1z4Mun14ibxcyvWjAedIuoh1QFyHPnnMFgzogSNzNvnkT9u54Wh1evFpTPce0hpWi07nZBdN7x53g51ha72/CLNNg+WkYVcuSb6XApuX+VvGorXmM+Qgr2jCZtgp5deV5dz5ugqeYD6ZZiz4bRjKYwK2NUf5SpUONmBPFfhVVXjxH3t2gwnCE7XEvIKXn5fDPRva65wGfk/yjoOTuuNPlN/ptsaY3Y8c8Z4/rcTtTiPaQCTmSx4I1MZcvWdHZ4QU0Jt2wwLFJraWyW4Qk4Pv80ZD0+HUT71oWVZECIBvRbH7yIhMKo7g/RSbIKjH+kuA+qWyyfKlI5iunRdeh93rzaGaF0wJlUF5hCgJWfR7yIJSYa8lBIovH8vv38YkETyBu151lFZfrXG27JctPRcxVtuNSN6cXiPCWKG6KQZ31jPFXiiR51+XcmUk3oosoClBmDE0J0arvN9rqrMIfWWZ7zym9CrTtIw7imzOMfOBdPKjXiydBSwC2pg5ZmN8G50IMoDVO7MhZQibeBojOPx7hEAPc+izb8Ua+2I="
+
+script:
+  - npm install -g yarn
+  - yarn install
+  - yarn test
+  - yarn run doc
+
+
+deploy:
+  # TODO - enable it when ready to release
+  - provider: script
+    skip_cleanup: true
+    script: npm run semantic-release
+    on:
+      branch: common-layout
+  - provider: script
+    skip_cleanup: true
+    # TODO - replace maoo/fdc3-pages-layout with FDC3/FDC3, as soon as code is contributed
+    script: curl https://raw.githubusercontent.com/maoo/FDC3/common-docs-layout/docs/prepare-docs-release.sh | bash
+    on:
+      branch: common-layout
+  - provider: pages
+    skip-cleanup: true
+    github-token: $GITHUB_TOKEN
+    email: $GITHUB_EMAIL
+    name: $GITHUB_USERNAME
+    verbose: true
+    keep-history: true
+    local-dir: gh-pages-docs
+    target_branch: gh-pages
+    on:
+      branch: common-layout
+
+# TODO - enable it when ready to release
+# notifications:
+#   email:
+#     - fdc3-api@finos.org
+#     - announce@finos.org
