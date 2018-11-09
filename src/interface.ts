@@ -87,7 +87,7 @@ interface DesktopAgent {
   open(name: string, context?: Context): Promise<void>;
 
   /**
-   * Find out more information about a particular intent by passing it's name, and optionally its context.
+   * Find out more information about a particular intent by passing its name, and optionally its context.
    *
    * findIntent is effectively granting programmatic access to the Desktop Agent's resolver. 
    * A promise resolving to the intent, its metadata and metadata about the apps that registered it is returned.
